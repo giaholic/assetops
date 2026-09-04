@@ -521,50 +521,104 @@ The current conclusion is limited to the user's existing workflow:
 
 ---
 
-## 7. Opportunity
+## 7. Product Opportunity
 
-There is an opportunity to replace part of the user's spreadsheet-based workflow with an integrated application.
+The primary product opportunity is to provide the user with a reliable way to understand and analyze the complete financial lifecycle of her trading activity, from individual transactions to trade cycles, assets, and overall portfolio performance.
 
-By retrieving account, order, execution, fee, and market data directly from Mercado Bitcoin, AssetOps could reduce manual data entry and provide calculated information that helps the user understand individual trades and the overall portfolio.
+The current workflow separates reliable exchange execution data from the customized calculations and analytical context maintained in the user's spreadsheet. This creates an opportunity to bring these contexts together so that trading results can be evaluated using reliable transaction information while preserving the analytical capabilities required by the user.
 
-Potential capabilities include:
+### 7.1 Trade Cycle Intelligence
 
-- Automatically retrieving transaction and execution information.
-- Maintaining a structured transaction history.
-- Tracking planned, open, executed, and cancelled orders.
-- Calculating acquisition costs.
-- Calculating average purchase prices.
-- Tracking current asset positions.
-- Retrieving applicable maker and taker fees.
-- Recording actual execution fees.
-- Estimating the result of a potential sale.
-- Calculating target selling prices based on user-defined return objectives.
-- Supporting hypothetical buy and sell scenarios.
-- Comparing target prices with current market prices.
-- Monitoring portfolio allocation and performance.
-- Identifying differences between estimated and actual transaction results.
+The strongest opportunity identified during discovery is improving the user's ability to understand the actual financial result of a complete trade cycle.
 
-The initial goal is not to automate investment decisions.
+The user's current priorities are:
 
-AssetOps should provide information, calculations, and scenario analysis that support the user's own decision-making process.
+1. Determine with confidence the realized net result of completed trades.
+2. Understand related buy and sell transactions as complete trade cycles.
+3. Evaluate the expected result of potential trades before execution.
+4. Reduce the manual reconciliation required between exchange data and external calculations.
 
-### 7.1 Automated Trading Fee Handling
+The opportunity is therefore not simply to automate the existing spreadsheet workflow.
 
-AssetOps should retrieve the user's current maker and taker trading fees from Mercado Bitcoin whenever possible.
+It is to establish a reliable analytical representation of trading activity that distinguishes planned, estimated, and actual transaction results and allows the user to understand how each completed trade cycle affected her capital.
 
-For planned transactions, these rates can be used to estimate transaction costs and potential results.
+### 7.2 Asset-Level Intelligence
 
-For completed transactions, AssetOps should prioritize actual execution data returned by Mercado Bitcoin whenever available.
+The user currently trades more than 30 digital assets.
 
-This allows AssetOps to distinguish between:
+Reliable trade-cycle information creates an opportunity to aggregate results by asset and help the user understand how different assets contribute to her overall trading performance.
 
-- Estimated fees before execution.
-- Actual fees after execution.
-- Maker executions.
-- Taker executions.
-- Estimated transaction results.
-- Actual transaction results.
+Relevant questions include:
 
+- Which assets have generated the highest and lowest realized results?
+- How many trade cycles have been completed for each asset?
+- What is the average realized result by asset?
+- How much capital has been allocated to each asset?
+- How do trading activity and results differ across assets?
+
+These analytical needs depend on reliable transaction and trade-cycle information and should not be treated independently from the core trade-cycle problem.
+
+### 7.3 Portfolio Intelligence
+
+Once reliable transaction, trade-cycle, and asset-level information is available, there is an opportunity to provide a higher-level view of portfolio and capital evolution.
+
+The user wants to understand how her overall holdings and trading results evolve over time and whether her trading activity is moving her portfolio toward her personally defined performance objectives.
+
+The user currently has a personal goal of evaluating whether her trading activity can achieve an average daily portfolio growth target of 1%.
+
+This target represents a user-defined performance objective, not a product promise, expected investment return, or guaranteed outcome.
+
+The product opportunity is to enable accurate measurement and comparison against user-defined objectives, regardless of whether actual performance is positive, negative, or below the target.
+
+### 7.4 Trade Planning and Scenario Analysis
+
+After reliable actual trade results can be established, there is an additional opportunity to improve pre-trade analysis.
+
+The user currently experiments with potential buy and sell prices through spreadsheet calculations and market observation.
+
+A better analytical process could allow different transaction scenarios to be evaluated using known costs, quantities, fee structures, and other validated exchange rules.
+
+The opportunity is to improve the information available for decision-making rather than to predict future market prices or guarantee profitable trades.
+
+### 7.5 Operational Efficiency
+
+Reducing manual reconciliation between exchange information and external calculations represents an additional opportunity.
+
+However, discovery indicates that operational efficiency is not currently the user's highest-value outcome.
+
+The primary value lies in confidence and visibility:
+
+**first understand the result correctly, then reduce the effort required to obtain that understanding.**
+
+### 7.6 Opportunity Boundaries
+
+The opportunity identified during current discovery does not imply that:
+
+- Profitable trades can be guaranteed.
+- Future market prices can be predicted reliably.
+- A particular asset can be guaranteed to produce better returns.
+- A user-defined performance target will be achieved.
+- Automated trading decisions are required to solve the current problem.
+- AssetOps or ServiceNow is the only possible solution.
+- No existing third-party product already addresses these needs.
+
+Alternative exchanges and specialized portfolio or trading-analysis products have not yet been evaluated.
+
+The current opportunity is therefore based on the unmet needs observed in the primary user's existing workflow rather than on a validated broader market gap.
+
+### 7.7 Opportunity Summary
+
+The opportunity can be summarized as:
+
+**Enable the user to move from isolated transaction data and manually reconciled estimates to reliable trade-cycle intelligence, and use that foundation to understand asset-level and portfolio-level performance over time.**
+
+The intended progression of value is:
+
+Transaction Data  
+→ Trade Cycle Intelligence  
+→ Asset-Level Intelligence  
+→ Portfolio Intelligence  
+→ Better-Informed Trade Planning
 ---
 
 ## 8. Assumptions
