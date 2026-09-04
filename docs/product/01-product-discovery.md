@@ -24,7 +24,7 @@ To plan a trade, the user needs to understand the complete financial context of 
 
 Although the trading activity itself takes place on Mercado Bitcoin, the information required to evaluate the complete trade cycle is not currently available to the user in a sufficiently consolidated and actionable view. As a result, the user relies on a manually maintained spreadsheet to combine transaction data and perform the calculations required to plan and evaluate trades.
 
-This fragmented process makes it difficult to confidently determine the expected net result of a transaction before executing it. Manual data entry and calculations also introduce the risk of outdated or inconsistent information, calculation errors, and differences between the expected and actual result after fees, quantity adjustments, precision, and rounding are considered.
+This fragmented process makes it difficult to confidently determine the expected net result of a transaction before executing it. The manual process requires the user to maintain transaction data and calculations outside the exchange. This creates additional reconciliation effort and introduces potential risks of outdated information, calculation errors, and differences between expected and actual results after fees, quantity adjustments, precision, and rounding are considered.
 
 The core problem is therefore not simply the amount of manual work involved, but the **lack of a consolidated and reliable view of the information required to evaluate and manage a complete trade cycle with confidence.**
 
