@@ -70,72 +70,260 @@ This requires visibility into the financial context of the trade, including asse
 
 ## 4. Current Workflow (As-Is)
 
-The user's current trading workflow is highly manual and is split between Mercado Bitcoin, email notifications, and a spreadsheet.
+The user's current trading workflow is a recurring process distributed across Mercado Bitcoin, email notifications, and a manually maintained spreadsheet.
 
-### 4.1 Buy Order Execution
+The spreadsheet is used primarily for planning, estimating, and recording trades. It is not considered a fully reliable source of truth for transaction values because calculated values may differ from those presented by Mercado Bitcoin.
 
-1. The user manually creates a buy order in Mercado Bitcoin.
-2. Mercado Bitcoin executes the order when the required market conditions are met.
-3. The user receives an email notification informing her that the order has been executed.
-4. The email notification is currently the primary trigger used by the user to identify that an order has been completed.
-5. The user opens her spreadsheet.
-6. She manually marks the corresponding buy order as executed.
-7. She records or updates the transaction information.
-8. She creates a new row representing a planned future sell transaction.
-9. Spreadsheet formulas are used to calculate a target selling price intended to produce a desired positive return after trading fees.
-10. The user opens Mercado Bitcoin again.
-11. She manually creates a limit sell order using the calculated transaction values.
-12. She compares Mercado Bitcoin's calculated values with the spreadsheet results before submitting the order.
-13. If the values differ, she may need to manually adjust the transaction values.
+When differences are identified before submitting an order, the user generally treats the values presented by Mercado Bitcoin as authoritative and manually transfers them back into the spreadsheet.
 
-### 4.2 Sell Order Execution
+### 4.1 Market Observation and Buy Planning
 
-1. Mercado Bitcoin executes the sell order.
-2. The user receives an email notification confirming the execution.
-3. The user opens the spreadsheet.
-4. She marks the corresponding sell transaction as executed.
-5. She records or updates the transaction information.
-6. The spreadsheet calculates the monetary result and percentage return of the completed buy/sell cycle.
-7. The user then considers creating another buy order to start a new trade cycle.
-8. Unlike the selling-price calculation, the user does not currently have a well-defined rule for determining an appropriate new buying price.
+Before creating a buy order, the user reviews the asset's price chart across multiple time horizons.
 
-### 4.3 Open Order Reassessment
+The user typically observes:
 
-If an order remains open for too long, the user may:
+- Months.
+- Weeks.
+- Days.
+- Three-hour intervals.
+- One-hour intervals.
+- Fifteen-minute intervals.
+- One-minute intervals.
 
-1. Cancel the existing order.
-2. Re-evaluate the current market price.
-3. Recalculate a target price.
-4. Verify whether the new scenario still produces an acceptable estimated result after fees.
-5. Submit a replacement order.
+Particular attention is given to recent price oscillations and perceived local lows and highs.
 
-### 4.4 Current Trade Cycle
+The user does not currently use a formal or validated methodology to determine an entry price. Chart observation is used as an informal decision-support process for choosing a potential buy price.
 
-The current process can therefore be represented as:
+Once a potential buy price has been selected, the user creates a planned buy transaction in the spreadsheet before submitting the actual order to Mercado Bitcoin.
 
-Buy Order  
-→ Execution  
+### 4.2 Buy Calculation and Order Creation
+
+The user currently experiments with predetermined BRL transaction amounts.
+
+Recent experiments have involved progressively increasing transaction amounts over fixed periods, such as approximately BRL 1, BRL 2, and potentially BRL 3 per transaction.
+
+These amounts represent the user's current experimental trading behavior and are not fixed business rules.
+
+Using the intended BRL amount and selected asset price, the user uses spreadsheet calculations to estimate:
+
+- Asset quantity.
+- Trading fee.
+- Total transaction value.
+- Other calculated values required to represent the planned purchase.
+
+The resulting values may contain multiple decimal places and may not exactly reproduce the values accepted or calculated by Mercado Bitcoin.
+
+The user then creates the corresponding order in Mercado Bitcoin, normally using:
+
+- Limit Order.
+- Post Only.
+
+Post-only execution is currently preferred in an attempt to obtain the applicable maker fee rather than a higher-cost execution type.
+
+Before confirming the order, the user compares the values calculated in the spreadsheet with those displayed by Mercado Bitcoin.
+
+Potential differences may occur in:
+
+- Price.
+- Asset quantity.
+- Trading fee.
+- Total transaction value.
+- Decimal precision.
+
+When a difference is identified, the user manually copies the value presented by Mercado Bitcoin into the spreadsheet before submitting the order.
+
+The exact cause of these differences has not yet been validated.
+
+### 4.3 Buy Order Execution
+
+After the buy order has been submitted, the user waits for execution.
+
+An email notification from Mercado Bitcoin currently acts as the primary trigger informing the user that the order has completed.
+
+After receiving the notification, the user:
+
+1. Opens the previously created buy row in the spreadsheet.
+2. Changes the transaction status to executed.
+3. Records the execution date.
+
+Price, quantity, fee, and total transaction values were generally already recorded during order planning and reconciliation before the order was submitted.
+
+The user does not currently perform a systematic post-execution reconciliation of all spreadsheet values against actual execution data.
+
+### 4.4 Sell Planning
+
+After a buy order has executed, the user creates a new planned sell row in the spreadsheet.
+
+The spreadsheet uses information from the corresponding purchase as the starting point for estimating a potential sale.
+
+The current calculation process is approximately:
+
+1. Start with the asset quantity associated with the purchase.
+2. Subtract the asset-denominated buy fee to estimate the quantity available for sale.
+3. Use the resulting quantity as the planned sell quantity.
+4. Initially use the purchase price as a reference sell price.
+5. Estimate the BRL-denominated selling fee.
+6. Calculate the estimated total proceeds from the sale.
+7. Compare the estimated sale proceeds with the total BRL cost of the purchase.
+8. Calculate the estimated monetary result.
+9. Calculate the estimated percentage result.
+10. Incrementally increase the proposed selling price until the spreadsheet estimates at least a small positive net result.
+
+The user may select a higher target selling price when current market conditions appear to support a larger potential return.
+
+The spreadsheet therefore acts as a scenario and estimation tool rather than an authoritative representation of the final transaction.
+
+### 4.5 Sell Order Creation and Quantity Reconciliation
+
+The user generally intends to sell 100% of the available position associated with the trade.
+
+However, the quantity calculated by the spreadsheet after subtracting the estimated or recorded purchase fee does not always match the quantity that Mercado Bitcoin presents when the user selects 100% of the available asset balance.
+
+When this occurs, the user:
+
+1. Selects 100% of the available balance in Mercado Bitcoin.
+2. Copies the resulting quantity into the spreadsheet.
+3. Allows the spreadsheet to recalculate the estimated fees, proceeds, and result.
+4. Continues comparing values between the spreadsheet and Mercado Bitcoin.
+5. Uses Mercado Bitcoin values when the two sources cannot be reconciled.
+
+The user has observed residual-balance and quantity discrepancies but does not currently have a validated explanation for their cause.
+
+Potential causes such as precision, rounding, fees, or exchange rules remain hypotheses to be investigated separately.
+
+### 4.6 Sell Order Execution
+
+After submitting the sell order, the user waits for execution.
+
+When the execution email is received, the user:
+
+1. Opens the corresponding sell row in the spreadsheet.
+2. Records the execution date.
+3. Changes the transaction status to executed.
+4. Creates a new planned buy row for the same asset.
+5. Begins observing the market again to determine a potential new entry price.
+
+The spreadsheet calculates an estimated monetary and percentage result for the completed trade cycle.
+
+However, the user does not currently have an independent and reliable method for reconciling the spreadsheet's calculated result against the actual complete financial result of the trade.
+
+The user therefore cannot currently confirm with confidence whether the calculated net result exactly matches the realized result after all exchange calculations, fees, quantity adjustments, precision, and rounding are considered.
+
+### 4.7 Open Order Reassessment and Replacement
+
+If an order remains open longer than expected, the user may reassess it.
+
+There is currently no fixed time threshold or formal rule that determines when an order should be cancelled.
+
+The decision is based on a combination of:
+
+- How long the order has remained open.
+- Current and recent asset prices.
+- Chart observation.
+- The originally targeted return.
+- Previous executions at similar target returns.
+- The user's judgment.
+
+For a sell order, the user may return to the spreadsheet and reduce the expected profit margin while still attempting to maintain a positive estimated result.
+
+The user then:
+
+1. Recalculates the trade scenario in the spreadsheet.
+2. Cancels the existing Mercado Bitcoin order.
+3. Creates a replacement order using the revised values.
+
+The relationship between cancelled and replacement orders is not currently formally tracked beyond the spreadsheet workflow.
+
+### 4.8 Partial Executions
+
+The user has observed a partial execution at least once.
+
+In that case, no manual intervention was performed.
+
+The order remained in an executing state and the user waited until the remaining quantity was executed.
+
+Because the user's current transaction amounts are small, partial executions have not yet been a frequent part of the observed workflow.
+
+The user does not currently have a defined process for handling an order that remains partially executed for an extended period.
+
+### 4.9 Current Trade Cycle
+
+The current end-to-end process can therefore be represented as:
+
+Market Observation  
+→ Buy Price Selection  
+→ Planned Buy in Spreadsheet  
+→ Buy Calculation  
+→ Mercado Bitcoin Order Configuration  
+→ Spreadsheet / Exchange Reconciliation  
+→ Limit + Post-Only Buy Order  
+→ Wait for Execution  
 → Email Notification  
-→ Spreadsheet Update  
-→ Sell Target Calculation  
-→ Manual Limit Sell Order  
-→ Execution  
+→ Spreadsheet Status / Date Update  
+→ Planned Sell Creation  
+→ Sell Scenario Calculation  
+→ Sell Quantity Reconciliation  
+→ Mercado Bitcoin Order Configuration  
+→ Limit + Post-Only Sell Order  
+→ Wait for Execution  
 → Email Notification  
-→ Spreadsheet Update  
-→ Result Calculation  
-→ New Buy Target Decision  
-→ Manual Buy Order  
+→ Spreadsheet Status / Date Update  
+→ Estimated Trade Result  
+→ New Buy Planning  
 → Repeat
 
-### 4.5 Systems Currently Used
+Open orders may branch into:
 
-The workflow currently depends on three separate tools:
+Open Order  
+→ Market Reassessment  
+→ Spreadsheet Recalculation  
+→ Cancellation  
+→ Replacement Order
 
-- **Mercado Bitcoin:** order creation, execution, cancellation, and market information.
-- **Email:** execution notification.
-- **Spreadsheet:** transaction tracking, calculations, trade planning, and result analysis.
+Partial executions currently branch into:
 
-The user manually transfers and reconciles information between these systems.
+Partial Execution  
+→ Wait for Remaining Execution  
+→ Full Execution
+
+### 4.10 Systems Currently Used
+
+The workflow currently depends on three systems:
+
+**Mercado Bitcoin**
+
+Used for:
+
+- Market and chart observation.
+- Actual order configuration.
+- Order submission.
+- Order cancellation.
+- Available-balance verification.
+- Final pre-submission transaction values.
+- Order execution.
+
+When spreadsheet estimates and Mercado Bitcoin values differ during order creation, the user currently treats Mercado Bitcoin's displayed values as authoritative.
+
+**Email**
+
+Used primarily as the trigger informing the user that an order has executed and that the next step in the trade cycle should begin.
+
+**Spreadsheet**
+
+Used for:
+
+- Planned transaction creation.
+- Buy and sell calculations.
+- Fee estimation.
+- Quantity estimation.
+- Transaction status tracking.
+- Execution-date recording.
+- Sell-price scenario analysis.
+- Estimated profit calculation.
+- Percentage-return estimation.
+- Historical trade-cycle tracking.
+
+The spreadsheet is currently a planning and tracking tool rather than a fully reliable source of truth for actual exchange calculations.
 
 ---
 
