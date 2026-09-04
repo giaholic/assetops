@@ -34,25 +34,37 @@ The core problem is therefore not simply the amount of manual work involved, but
 
 ### 3.1 Primary User
 
-The initial user of AssetOps is the product creator herself, who actively uses Mercado Bitcoin to buy and sell digital assets.
+The initial primary user of AssetOps is the product creator herself, an active Mercado Bitcoin user who is currently learning and experimenting with short-term digital asset trading.
 
-The user currently relies on a spreadsheet to manually track transactions and perform calculations related to purchases, sales, trading fees, portfolio positions, target selling prices, and trade results.
+The current implementation is designed around this user's personal workflow and should not assume that the same behaviors, needs, or trading practices apply to all Mercado Bitcoin users or digital asset traders.
 
-### 3.2 User Context
+A broader target audience may be explored in the future if the product evolves beyond its current personal-use and ServiceNow-based implementation.
 
-The user:
+### 3.2 Trading Behavior
 
-- Has an active Mercado Bitcoin account.
-- Buys and sells digital assets.
-- Primarily uses limit orders when planning trades.
-- Records transactions manually in a spreadsheet.
-- Uses calculated spreadsheet fields to analyze trades.
-- Evaluates potential selling prices after purchasing an asset.
-- Wants to understand whether a potential sale would achieve a desired positive return after fees.
-- Uses email notifications as the primary trigger for identifying completed orders.
-- Manually transfers information between Mercado Bitcoin and the spreadsheet.
-- Wants to reduce the amount of manual data entry and calculation involved in this process.
-- Wants to better understand how to determine potential re-entry prices after completing a sale.
+The user monitors the market daily and performs recurring buy and sell operations, primarily using limit orders with post-only execution in an attempt to reduce trading fees.
+
+The user currently experiments with short-term price movements by observing recent and historical price ranges and positioning buy and sell orders based on her interpretation of those movements.
+
+After completing a sell transaction, the user commonly continues trading the same asset by considering a new buy order, creating recurring trade cycles.
+
+Order execution notifications received by email currently act as the main trigger for reviewing the completed transaction and planning the next action.
+
+### 3.3 Goals and Decision-Making Context
+
+The user seeks to achieve a positive net result after trading fees and attempts to maximize the return of each trade when market conditions allow.
+
+In the current workflow, even a small positive net result may be considered acceptable. The user reports that recent trades commonly involve relatively small returns, often around 1–2%, although this is an observed behavior rather than a fixed product requirement or guaranteed outcome.
+
+The user does not currently follow a formal or validated methodology for selecting assets or determining entry points. Initial asset purchases have largely been exploratory. Current decisions are informed by observing price charts, recent price movements, and historical minimum and maximum values.
+
+Once capital has been allocated to an asset, the user commonly continues buying and selling that same asset across subsequent trade cycles.
+
+### 3.4 Primary User Need
+
+During a trade cycle, the user needs to evaluate market conditions and understand how different entry and exit prices affect the expected net result of the operation so that she can choose where to position buy and sell orders with greater confidence.
+
+This requires visibility into the financial context of the trade, including asset quantities, acquisition costs, trading fees, expected proceeds, and the potential net result of different transaction scenarios.
 
 ---
 
