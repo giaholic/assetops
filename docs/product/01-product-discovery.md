@@ -329,103 +329,98 @@ The spreadsheet is currently a planning and tracking tool rather than a fully re
 
 ## 5. User Pain Points
 
-Based on the user's current workflow, the following pain points have been identified.
+The following pain points are based on the user's current documented workflow and direct user feedback.
 
-### 5.1 Manual Transaction Tracking
+Severity represents how disruptive each pain point currently feels to the user. It should not be interpreted as product priority, since the importance of the underlying outcome may differ from the perceived operational friction.
 
-Every buy or sell transaction needs to be manually recorded or updated in a spreadsheet.
+### 5.1 Lack of Confidence in Realized Trade Results
 
-This creates repetitive work and introduces the possibility of data-entry errors, missing transactions, and outdated information.
+**Severity: Medium**  
+**Outcome importance: High**
 
-### 5.2 Manual Trade Calculations
+The spreadsheet calculates an estimated monetary and percentage result for completed trade cycles, but the user does not currently have an independent and reliable way to confirm that this calculation matches the actual net result of the operation.
 
-The spreadsheet contains calculated fields that help the user understand the financial result of individual trades.
+The user therefore lacks confidence in determining whether a completed trade produced the positive net result indicated by the spreadsheet after all applicable fees, quantities, precision, and rounding effects are considered.
 
-These calculations depend on manually maintained transaction data and manually configured formulas.
+The primary concern is not guaranteeing profitable trades, but being able to determine accurately whether a completed trade was profitable or unprofitable and by how much.
 
-### 5.3 Target Selling Price Calculation
+This is currently the most important outcome identified by the user.
 
-After purchasing an asset, the user needs to determine an appropriate selling price for a future limit order.
+### 5.2 Spreadsheet and Mercado Bitcoin Value Discrepancies
 
-The target price may depend on factors such as:
+**Severity: Medium**
 
-- Purchase price.
-- Purchased quantity.
-- Trading fees.
-- Desired monetary return.
-- Desired percentage return.
-- Numeric precision and exchange restrictions.
-- Previous transactions involving the same asset.
+Values calculated in the spreadsheet do not always match the values displayed or accepted by Mercado Bitcoin during order configuration.
 
-The user currently relies on spreadsheet calculations to support this decision.
+Observed discrepancies may affect fields such as:
 
-### 5.4 Buy Target Decision
+- Asset quantity.
+- Trading fee.
+- Total transaction value.
+- Decimal representation.
 
-After a sell transaction is completed, the user wants to eventually create another buy order.
+When discrepancies occur, the user generally replaces spreadsheet estimates with values displayed by Mercado Bitcoin.
 
-However, the user does not currently have a clearly defined rule for determining the next target buying price.
+The exact causes of these discrepancies have not yet been validated. Precision, rounding, fee calculation, and exchange-specific rules remain possible explanations rather than confirmed causes.
 
-This is different from calculating a selling target after a known purchase because the future market price is unknown.
+### 5.3 Manual Reconciliation Between Spreadsheet and Exchange
 
-A future AssetOps capability could support scenario analysis, allowing the user to evaluate hypothetical buy and sell combinations and their estimated results.
+**Severity: High**
 
-The application should not assume that a specific buying price will guarantee a future profit.
+The user repeatedly compares spreadsheet calculations with values displayed by Mercado Bitcoin while preparing transactions.
 
-### 5.5 Fragmented Workflow
+When the values differ, information must be manually transferred from Mercado Bitcoin back into the spreadsheet, after which spreadsheet formulas recalculate dependent values.
 
-Trade execution happens in Mercado Bitcoin, execution confirmation is received by email, and trade analysis happens in a separate spreadsheet.
+This creates repeated reconciliation work during trade planning and makes the spreadsheet dependent on manual corrections to remain aligned with the exchange.
 
-The user therefore needs to move between multiple tools throughout the trade cycle.
+### 5.4 Uncertainty About Sellable Asset Quantity
 
-### 5.6 Data Synchronization
+**Severity: High**
 
-Because transaction information is manually transferred from Mercado Bitcoin into the spreadsheet, the spreadsheet may not always represent the latest account state.
+The user attempts to estimate the quantity available for sale by subtracting the asset-denominated purchase fee from the purchased quantity.
 
-### 5.7 Portfolio Visibility
+However, this estimated quantity does not always match the quantity presented when 100% of the available asset balance is selected in Mercado Bitcoin.
 
-Individual transactions are tracked, but understanding their relationship with the overall portfolio requires additional calculations and organization.
+As a result, the user cannot currently determine with confidence, using the spreadsheet alone, the exact quantity that will be available for a subsequent sale.
 
-Initial hypotheses include:
+The cause of this discrepancy has not yet been validated.
 
-- Difficulty consolidating portfolio information.
-- Limited visibility into portfolio evolution over time.
-- Need to manually combine information from different sources.
-- Difficulty understanding portfolio allocation.
-- Difficulty connecting trading activity with overall portfolio performance.
+### 5.5 Trial-and-Error Trade Planning
 
-### 5.8 Numeric Precision and Rounding
+**Severity: High**
 
-The user has identified differences between spreadsheet calculations and the values accepted or calculated by Mercado Bitcoin.
+Determining transaction targets currently requires repeated manual experimentation.
 
-One possible source of these differences is the number of decimal places and increments supported for asset quantities, prices, or monetary values.
+When planning a sale, the user incrementally adjusts the proposed selling price in the spreadsheet until the estimated result reaches an acceptable positive value. The target may then be adjusted again based on current market observations.
 
-The spreadsheet may use a different numeric precision from the exchange.
+When planning a new purchase after a completed sale, the user does not currently follow a formal or validated methodology for determining the next entry price.
 
-The exact Mercado Bitcoin rules for the following have not yet been fully validated:
+Trade planning therefore combines spreadsheet experimentation, chart observation, and user judgment rather than a consistently defined decision process.
 
-- Asset quantity precision.
-- Price precision.
-- Minimum quantity increments.
-- Minimum price increments.
-- Rounding behavior.
-- Order quantity restrictions.
-- Trading fee precision.
+### 5.6 Fragmented Workflow
 
-This creates uncertainty when transferring calculated transaction values from the spreadsheet into Mercado Bitcoin.
+**Severity: Low**
 
-AssetOps must not assume precision or rounding rules. These rules must be identified from official API or exchange specifications and tested before financial calculations are implemented.
+The current trade cycle requires the user to move between Mercado Bitcoin, email notifications, and the spreadsheet.
 
-### 5.9 Trading Fee Calculation
+Although this fragmentation contributes to the overall workflow complexity, the user currently considers switching between systems to be a relatively low-severity pain point.
 
-Trading fees directly affect the actual cost and return of each transaction.
+The more significant friction comes from reconciling values and understanding the financial result of transactions rather than from the number of systems itself.
 
-The user's current spreadsheet calculations account for trading fees, which may differ depending on whether an execution is classified as maker or taker.
+### 5.7 Risks and Unvalidated Hypotheses
 
-Incorrect or outdated fee assumptions can cause differences between spreadsheet calculations and the actual financial result of a trade.
+The following should not currently be treated as confirmed user pain points:
 
-AssetOps should minimize manual fee configuration whenever reliable fee information is available through the Mercado Bitcoin API.
+- The spreadsheet may contain calculation errors.
+- Manual entry may result in missing or outdated transaction information.
+- Precision or rounding rules may explain discrepancies between systems.
+- Fee calculation differences may explain discrepancies between systems.
+- Residual balances may be caused by exchange precision or fee rules.
+- Portfolio allocation visibility may represent a significant user problem.
 
-The application should distinguish between estimated fees for planned transactions and actual fees associated with completed executions.
+These items are risks, possible causes, or hypotheses that require further validation.
+
+They should remain separate from directly observed pain points until supporting evidence is available.
 
 ---
 
