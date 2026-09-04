@@ -1063,6 +1063,232 @@ Several elements of this hypothesis model remain unvalidated, including:
 These uncertainties should be investigated before the corresponding product behavior is treated as validated.
 
 ---
+## 11. Evidence, Assumptions, Hypotheses, and Unknowns
+
+This section provides an explicit classification of the current discovery findings.
+
+The purpose is to prevent user observations, product assumptions, proposed explanations, and externally verifiable facts from being treated as equivalent forms of evidence.
+
+### 11.1 Evidence Classification
+
+Evidence collected during the current discovery is primarily based on direct description and observation of the primary user's own workflow.
+
+Unless explicitly stated otherwise, these findings should be interpreted as **user-reported or workflow-observed evidence**, not as independently verified claims about Mercado Bitcoin, financial methodology, exchange behavior, or the broader digital asset market.
+
+#### E-01 — The User Performs Recurring Trading Activity
+
+**Classification:** User-reported evidence
+
+The primary user performs recurring buy and sell operations using Mercado Bitcoin and currently trades across more than 30 digital assets.
+
+#### E-02 — Mercado Bitcoin Is the Current Execution Environment
+
+**Classification:** User-reported / workflow evidence
+
+The user currently uses Mercado Bitcoin to observe market information, configure orders, submit and cancel orders, verify available quantities, and execute transactions.
+
+Within the current workflow, values presented by Mercado Bitcoin are treated by the user as authoritative when they differ from spreadsheet estimates.
+
+This does not independently validate the correctness or completeness of every Mercado Bitcoin value or calculation.
+
+#### E-03 — A Custom Spreadsheet Is Used for Planning and Analysis
+
+**Classification:** Direct workflow evidence
+
+The user created and maintains a spreadsheet to support activities including:
+
+- Transaction planning.
+- Quantity and fee estimation.
+- Buy and sell calculations.
+- Sell-price scenario analysis.
+- Estimated trade-result calculations.
+- Percentage-return calculations.
+- Transaction tracking.
+- Historical analysis.
+- Charts and aggregated metrics.
+
+#### E-04 — Manual Reconciliation Occurs
+
+**Classification:** Direct workflow evidence
+
+The user compares spreadsheet estimates with values displayed by Mercado Bitcoin during transaction preparation.
+
+When differences are identified, the user manually transfers Mercado Bitcoin values into the spreadsheet and allows dependent calculations to update.
+
+#### E-05 — Value Discrepancies Have Been Observed
+
+**Classification:** User-reported evidence
+
+The user has observed differences between spreadsheet calculations and values displayed by Mercado Bitcoin.
+
+Observed differences may involve:
+
+- Asset quantities.
+- Fees.
+- Transaction totals.
+- Decimal representation.
+
+The causes of these differences have not been established.
+
+#### E-06 — Sellable Quantity Discrepancies Have Been Observed
+
+**Classification:** User-reported evidence
+
+The quantity estimated by the user's spreadsheet does not always match the quantity displayed when the user attempts to sell 100% of the available asset balance.
+
+The user currently resolves this by using the quantity displayed by Mercado Bitcoin.
+
+The cause remains unknown.
+
+#### E-07 — Realized-Result Confidence Is the Highest-Importance Outcome
+
+**Classification:** Direct user evidence
+
+The user identified the ability to determine with confidence whether completed trading activity produced a positive or negative net result as the most important current outcome.
+
+This outcome is more important to the user than eliminating manual reconciliation itself.
+
+#### E-08 — Complete Trade Context Is Valuable
+
+**Classification:** Direct user evidence
+
+The user wants to understand related buying and selling activity as a meaningful financial context rather than evaluating only isolated orders.
+
+For more complex scenarios involving multiple purchases, the user's current mental model favors an aggregated asset position that can later be partially or fully reduced through sales.
+
+The calculation methodology for this model has not yet been validated.
+
+#### E-09 — Portfolio and Asset-Level Performance Are Important
+
+**Classification:** Direct user evidence
+
+The user wants to understand:
+
+- Performance by asset.
+- Which assets contribute more or less to realized results.
+- Portfolio-value evolution.
+- Realized trading performance.
+- Unrealized changes in open positions.
+
+The user wants realized trading performance and total portfolio-value performance to be measured separately.
+
+#### E-10 — The User Has a Personal Performance Objective
+
+**Classification:** Direct user evidence
+
+The user currently uses a 1% daily performance target as a personal objective.
+
+The user considers the objective reached if either realized trading performance or total portfolio-value performance independently reaches the target.
+
+This target represents user context only.
+
+It is not evidence that the target is achievable, sustainable, appropriate, or attributable to the product.
+
+#### E-11 — The User Has Not Evaluated Alternative Solutions
+
+**Classification:** Direct user evidence
+
+The primary user has not yet evaluated other exchanges, portfolio-management applications, crypto-analysis tools, or specialized trading-analysis products as alternatives to the current Mercado Bitcoin and spreadsheet workflow.
+
+Therefore, no conclusion about a broader market gap is currently supported.
+
+### 11.2 Assumptions
+
+The following remain assumptions rather than validated evidence:
+
+- Sufficient exchange data exists to calculate reliable realized results.
+- Required data can be accessed programmatically.
+- Applicable fee rules can be identified correctly.
+- Precision and rounding rules can be understood sufficiently.
+- External calculations can be reconciled with actual exchange outcomes.
+- Trading activity can be modeled consistently across complex position scenarios.
+- Historical transactions can be reconstructed sufficiently.
+- Reliable trade results can be aggregated meaningfully by asset.
+- Asset-level information can support reliable portfolio-level analysis.
+- Pre-trade scenarios can be estimated reliably from validated transaction rules.
+- ServiceNow can support the required precision, reliability, security, and performance.
+- Exchange integration can be implemented securely.
+- Similar needs exist among users beyond the current primary user.
+
+These assumptions are detailed and prioritized in the Product Assumptions section.
+
+### 11.3 Problem Hypotheses
+
+The current discovery also contains hypotheses about relationships between observed problems:
+
+- Reliable trade-result determination is the central user problem.
+- Manual reconciliation contributes to result uncertainty.
+- Position and trade-cycle context provides more analytical value than isolated transactions.
+- Reliable transaction information enables progressively higher levels of asset and portfolio intelligence.
+- Reliable performance information improves the user's ability to evaluate and plan trading activity.
+
+These hypotheses are supported to different degrees by current user evidence but remain open to further validation or disconfirmation.
+
+They are detailed in the Problem Hypotheses section.
+
+### 11.4 Unknowns
+
+The following remain explicitly unknown:
+
+- The complete set of exchange data required to calculate realized results.
+- Whether all required data is available from Mercado Bitcoin.
+- Which required data is available through APIs.
+- The exact applicable fee rules for relevant transaction scenarios.
+- The precision and rounding rules that explain observed discrepancies.
+- The appropriate financial methodology for aggregated positions, multiple purchases, and partial sales.
+- The appropriate treatment of partial executions.
+- The required reconciliation tolerance for reliable financial calculations.
+- The completeness of historical exchange data.
+- The appropriate methodology for realized versus unrealized performance.
+- The treatment of deposits, withdrawals, transfers, and other external capital movements in performance calculations.
+- Whether existing third-party products already solve the identified problem.
+- Whether the problem generalizes to a broader user population.
+
+These unknowns are represented by the prioritized Discovery Questions and should not be converted into product requirements until investigated.
+
+### 11.5 External Validation Boundary
+
+Current discovery evidence primarily validates the **primary user's experience and needs**.
+
+It does not yet independently validate:
+
+- Mercado Bitcoin's complete product capabilities.
+- Mercado Bitcoin's internal calculation methodology.
+- Current Mercado Bitcoin API coverage.
+- Current Mercado Bitcoin fee structures.
+- Exchange precision and rounding rules.
+- Financial or accounting methodologies.
+- Competitor capabilities.
+- Broader market demand.
+- The feasibility of the proposed technical implementation.
+
+Claims in these areas require appropriate external, technical, business-rule, or market evidence before being treated as validated facts.
+
+### 11.6 Traceability Principle
+
+The project should maintain the following distinction throughout subsequent phases:
+
+Evidence  
+→ supports or challenges assumptions and hypotheses
+
+Assumptions  
+→ identify beliefs that require validation
+
+Hypotheses  
+→ describe testable explanations or relationships
+
+Discovery Questions  
+→ define what must be investigated
+
+Validated Findings  
+→ may become inputs to product decisions and requirements
+
+Product Requirements  
+→ should not be created solely from unvalidated assumptions
+
+This distinction should remain visible as AssetOps moves from discovery into business analysis, technical discovery, architecture, design, implementation, and validation.
+
+---
 
 ## 11. Current Spreadsheet Data Model
 
