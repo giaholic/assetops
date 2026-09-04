@@ -899,15 +899,168 @@ Discovery questions should remain open until supported by sufficient evidence. P
 
 ---
 
-## 10. Initial Hypothesis
+## 10. Problem Hypotheses
 
-If Mercado Bitcoin account, transaction, execution, fee, and market information is consolidated into a structured ServiceNow application, the user will be able to reduce manual transaction tracking, improve the consistency of trade calculations, better understand the financial result of completed trades, and evaluate future trade scenarios more efficiently.
+The following hypotheses describe the current understanding of the primary user's problem and the relationships believed to exist between its causes, symptoms, and desired outcomes.
 
-If AssetOps can automatically retrieve exchange data and apply validated calculation, fee, precision, and rounding rules, it may reduce the discrepancies currently experienced between spreadsheet calculations and Mercado Bitcoin values.
+These hypotheses are based on the discovery completed so far but should remain open to validation or rejection as additional evidence becomes available.
 
-The product may also provide a simpler way to monitor digital assets, understand portfolio allocation, and analyze portfolio evolution over time.
+### PH-01 — Reliable Trade Result Is the Core User Problem
 
-These hypotheses will be validated and refined as product discovery and technical investigation progress.
+**Hypothesis**
+
+The primary user's most important difficulty is not executing digital asset trades, but determining with confidence the actual net financial result of her trading activity after execution.
+
+The current spreadsheet provides an estimated result, but the user cannot independently confirm that the calculation fully reflects actual execution values, fees, quantities, precision, rounding, and other applicable exchange rules.
+
+**Expected evidence**
+
+This hypothesis is strengthened if:
+
+- The user continues to identify realized-result confidence as a high-importance outcome.
+- Material differences exist between externally calculated and actual exchange values.
+- Existing exchange information does not provide the user with a sufficiently clear representation of the complete realized result.
+
+**Potential disconfirmation**
+
+This hypothesis would be weakened if reliable realized results are already readily available to the user through an existing solution or if further investigation shows that result confidence is not materially important to the user's workflow.
+
+### PH-02 — Manual Reconciliation Contributes to Result Uncertainty
+
+**Hypothesis**
+
+The separation between authoritative exchange information and externally maintained spreadsheet calculations contributes to the user's uncertainty about transaction and trading results.
+
+The problem is not primarily the existence of multiple systems.
+
+Instead, the user must manually reconcile information between those systems because the spreadsheet provides the customized analytical context while Mercado Bitcoin provides the authoritative operational values.
+
+**Expected evidence**
+
+This hypothesis is strengthened if:
+
+- Reconciliation is repeatedly required during the current workflow.
+- Spreadsheet values differ materially from exchange values.
+- Manual corrections are necessary for spreadsheet calculations to remain aligned with the exchange.
+- Reliable use of authoritative transaction information reduces uncertainty in calculated results.
+
+**Potential disconfirmation**
+
+This hypothesis would be weakened if reconciliation can be shown to have little relationship with result uncertainty or if the spreadsheet already reproduces actual results reliably without meaningful reconciliation.
+
+### PH-03 — Position and Trade-Cycle Context Is More Useful Than Isolated Transactions
+
+**Hypothesis**
+
+Analyzing isolated orders is insufficient for the user's current analytical needs.
+
+The user requires relationships between acquisition activity, asset positions, subsequent disposals, applicable costs, and realized results in order to understand trading performance.
+
+For simple scenarios, this may resemble a direct buy-to-sell trade cycle.
+
+For more complex scenarios involving multiple purchases or partial sales, the user's current mental model favors treating purchases of the same asset as contributing to an aggregated position from which subsequent sales reduce quantity and realize results.
+
+The financial methodology used to calculate the cost and result of these aggregated positions has not yet been defined or validated.
+
+**Expected evidence**
+
+This hypothesis is strengthened if:
+
+- The user consistently evaluates performance across related buying and selling activity rather than individual orders.
+- Multiple purchases and partial sales occur in actual trading activity.
+- Position-level context improves the user's ability to interpret realized and remaining value.
+- A consistent allocation methodology can be established for complex transaction sequences.
+
+**Potential disconfirmation**
+
+This hypothesis would be weakened if individual exchange transactions already provide sufficient analytical context or if meaningful relationships between acquisitions, positions, and disposals cannot be established reliably.
+
+### PH-04 — Reliable Transaction Foundations Enable Higher-Level Performance Intelligence
+
+**Hypothesis**
+
+Reliable transaction and position information can provide the foundation for progressively higher levels of analysis:
+
+Transaction Data  
+→ Position and Trade-Cycle Intelligence  
+→ Asset-Level Intelligence  
+→ Portfolio Intelligence
+
+If underlying transaction quantities, costs, fees, and realized results are reliable, those results may be aggregated to help the user understand performance by asset and across the overall portfolio.
+
+**Expected evidence**
+
+This hypothesis is strengthened if:
+
+- Transaction-level results can be reconciled reliably.
+- Position and realized-result calculations remain consistent across multiple transaction patterns.
+- Asset-level aggregation produces meaningful and interpretable performance information.
+- Portfolio-level metrics can be calculated without introducing double counting or confusing realized and unrealized performance.
+
+**Potential disconfirmation**
+
+This hypothesis would be weakened if reliable transaction information cannot be established or if aggregating transaction results does not produce meaningful asset-level or portfolio-level analysis.
+
+### PH-05 — Reliable Performance Information Improves Decision Support
+
+**Hypothesis**
+
+Providing reliable historical results, position information, asset-level performance, and portfolio-level performance will give the user better information for evaluating her trading activity and planning future operations.
+
+The expected value is improved visibility and decision support rather than guaranteed improvement in investment returns.
+
+**Expected evidence**
+
+This hypothesis is strengthened if the user can use reliable performance information to answer questions such as:
+
+- Which assets have contributed most or least to realized results?
+- How have open positions changed in value?
+- How has total portfolio value evolved?
+- How does realized performance compare with portfolio-value performance?
+- How does actual performance compare with user-defined objectives?
+- Which historical information is relevant when evaluating future trade scenarios?
+
+**Potential disconfirmation**
+
+This hypothesis would be weakened if the resulting information does not materially affect the user's understanding, evaluation, or planning process.
+
+### 10.1 Hypothesis Relationship
+
+The current problem model can be summarized as:
+
+Authoritative Exchange Data
+        +
+External Analytical Calculations
+        ↓
+Manual Reconciliation
+        ↓
+Uncertainty About Reliable Results
+        ↓
+Need for Position and Trade-Cycle Intelligence
+        ↓
+Asset-Level Performance Understanding
+        ↓
+Portfolio-Level Performance Understanding
+        ↓
+Better-Informed User Decision-Making
+
+The hypotheses do not assume that better information will produce profitable trades or improve investment returns.
+
+They propose that more reliable and appropriately structured information may improve the user's ability to understand and evaluate her own trading activity.
+
+### 10.2 Remaining Uncertainty
+
+Several elements of this hypothesis model remain unvalidated, including:
+
+- Whether all required exchange data can be obtained.
+- Whether external calculations can be reconciled with sufficient reliability.
+- Which methodology should be used to calculate the cost of aggregated asset positions.
+- How partial sales should realize results against an aggregated position.
+- How realized and unrealized performance should be calculated and presented.
+- Whether reliable transaction information can be aggregated into meaningful portfolio-level metrics.
+- Whether existing third-party solutions already address these needs.
+
+These uncertainties should be investigated before the corresponding product behavior is treated as validated.
 
 ---
 
