@@ -621,23 +621,195 @@ Transaction Data
 → Better-Informed Trade Planning
 ---
 
-## 8. Assumptions
+## 8. Product Assumptions
 
-The initial assumptions are:
+The following assumptions represent beliefs that have not yet been fully validated.
 
-- The user has an active Mercado Bitcoin account.
-- The Mercado Bitcoin API provides enough data to support the initial use cases.
-- The application can securely authenticate with the Mercado Bitcoin API.
-- ServiceNow can consume and process the required API data.
-- Order execution information can be retrieved from Mercado Bitcoin without relying exclusively on email notifications.
-- Trading fee information can be retrieved or reliably derived from Mercado Bitcoin data.
-- Instrument-specific precision and order restrictions can be identified.
-- The first version will focus on read-only portfolio and trade management.
-- Real trading functionality will not be part of the initial MVP.
-- Planned transactions and scenario analysis can initially exist only inside AssetOps without creating real exchange orders.
-- Tax calculations will not be implemented until the applicable rules have been separately researched and validated.
+They are intentionally separated from validated user evidence and should be tested through product, business, integration, architecture, and technical discovery.
 
-These assumptions must be validated during discovery and technical investigation.
+Assumptions are classified according to the potential impact on the current product direction if they prove to be false.
+
+### 8.1 Critical Product Viability Assumptions
+
+#### PA-01 — Sufficient Exchange Data Is Available
+
+**Assumption:** Mercado Bitcoin provides, through accessible platform data, APIs, statements, or other reliable sources, sufficient information to determine the actual financial result of relevant trading operations.
+
+**Impact if false: Critical**
+
+The primary product opportunity depends on establishing reliable trade-cycle intelligence from actual transaction information.
+
+If the required data cannot be obtained with sufficient completeness and reliability, the product would not be able to satisfy its most important identified user outcome.
+
+This assumption requires technical and integration validation.
+
+#### PA-02 — Exchange Calculations Can Be Reliably Reconciled
+
+**Assumption:** The rules that materially affect transaction results, including applicable fees, asset quantities, precision, rounding, and execution values, can be understood and reproduced or reconciled with sufficient accuracy outside the exchange.
+
+**Impact if false: Critical**
+
+AssetOps does not need to reproduce irrelevant internal exchange calculations, but it must be able to determine financial results with sufficient reliability to reconcile them against the actual realized transaction outcome.
+
+If material differences cannot be explained or reconciled, the user would continue to lack confidence in the calculated trade result.
+
+This assumption requires business-rule, integration, and technical validation.
+
+### 8.2 Trade-Cycle Modeling Assumptions
+
+#### PA-03 — Trading Activity Can Be Represented as Meaningful Trade Cycles
+
+**Assumption:** Buy and sell activity can be associated using a consistent methodology that allows the user to evaluate meaningful trade cycles.
+
+**Impact if false: Medium to High**
+
+Simple one-buy/one-sell scenarios may be straightforward, but trading activity may include:
+
+- Multiple purchases of the same asset.
+- Partial sales.
+- Additional purchases before a position is fully sold.
+- Partial executions.
+- Cancelled and replacement orders.
+
+A methodology for associating acquisition and disposal activity has not yet been defined.
+
+Possible approaches may include system-defined allocation methodologies or explicit user association. These alternatives require further business analysis before a rule is selected.
+
+The product may remain viable if automatic association is not possible, provided that a sufficiently reliable alternative can be established.
+
+### 8.3 Historical Data Assumptions
+
+#### PA-04 — Existing Trading History Can Be Reconstructed
+
+**Assumption:** Sufficient historical information may be available to reconstruct some or all trading activity performed before AssetOps begins collecting data.
+
+**Impact if false: Low**
+
+Historical reconstruction would improve portfolio and performance analysis, but it is not required for the core product concept to remain viable.
+
+If historical information proves insufficient, AssetOps could begin establishing reliable trade-cycle and portfolio information prospectively from a defined starting point.
+
+The completeness of available historical information requires validation.
+
+### 8.4 Portfolio Intelligence Assumptions
+
+#### PA-05 — Reliable Trade-Cycle Data Can Be Aggregated by Asset
+
+**Assumption:** Once individual transaction and trade-cycle results are reliable, they can be aggregated meaningfully at the asset level.
+
+This could allow the user to evaluate how trading activity and realized results differ across the more than 30 assets currently traded.
+
+**Impact if false: Medium**
+
+Asset-level analysis contributes to the broader Portfolio Intelligence opportunity but is secondary to reliable individual trade-cycle results.
+
+#### PA-06 — Asset-Level Results Can Support Portfolio-Level Analysis
+
+**Assumption:** Reliable transaction and asset-level information can be aggregated into meaningful views of portfolio and capital evolution over time.
+
+**Impact if false: Medium**
+
+Portfolio Intelligence represents an important higher-level user need, but the core Trade Cycle Intelligence opportunity could remain valuable independently.
+
+### 8.5 Trade Planning Assumptions
+
+#### PA-07 — Validated Transaction Rules Can Support Pre-Trade Scenario Analysis
+
+**Assumption:** Once applicable fee, quantity, precision, and calculation rules are understood, they can be used to estimate the financial result of hypothetical buy and sell scenarios before an order is executed.
+
+**Impact if false: Medium**
+
+Pre-trade scenario analysis is valuable to the user but is lower priority than determining the actual result of completed trades.
+
+The product could therefore retain significant value even if scenario calculations require additional limitations or cannot initially reproduce every execution condition.
+
+### 8.6 Integration Assumptions
+
+#### PA-08 — Required Mercado Bitcoin Data Can Be Accessed Programmatically
+
+**Assumption:** Mercado Bitcoin provides APIs or other appropriate integration mechanisms through which the data required by the product can be retrieved with sufficient reliability.
+
+**Impact if false: High to Critical for the current implementation**
+
+The specific data availability, authentication mechanisms, endpoint coverage, pagination, rate limits, historical availability, and execution information have not yet been validated.
+
+This assumption requires dedicated integration discovery.
+
+#### PA-09 — Order Execution State Can Be Obtained Without Email as the Authoritative Source
+
+**Assumption:** Order and execution status can be obtained from exchange data or integration mechanisms without depending on execution-notification emails as the authoritative transaction source.
+
+**Impact if false: Medium to High**
+
+Email currently acts as a workflow trigger but is not assumed to be the preferred source of financial transaction truth.
+
+This requires integration validation.
+
+### 8.7 Platform and Architecture Assumptions
+
+#### PA-10 — ServiceNow Can Support the Current Implementation
+
+**Assumption:** ServiceNow can store, process, calculate, secure, and present the data required for the current AssetOps implementation with sufficient precision, performance, and reliability.
+
+**Impact if false: Medium for the current project; Low for the product concept**
+
+ServiceNow is the technology selected for the current implementation and portfolio project.
+
+It is not considered part of the fundamental product definition.
+
+If ServiceNow proves unsuitable for critical product requirements, the product concept may remain valid while requiring a different implementation architecture.
+
+This assumption requires architecture and technical validation.
+
+### 8.8 Security Assumptions
+
+#### PA-11 — Exchange Integration Can Be Implemented Securely
+
+**Assumption:** Required exchange credentials and account access can be managed without exposing sensitive information and with permissions appropriate to the capabilities being implemented.
+
+**Impact if false: High**
+
+The current product direction assumes that required data access can be implemented without introducing unacceptable credential or account-security risks.
+
+Authentication, credential storage, permissions, logging, and repository hygiene require dedicated security validation.
+
+### 8.9 User and Product Value Assumptions
+
+Discovery has already provided direct user evidence that:
+
+- Confidence in realized trade results is highly important to the primary user.
+- Complete trade-cycle visibility is valuable.
+- Pre-trade analysis is valuable.
+- Portfolio and asset-level performance visibility is desired.
+- Manual reconciliation is a significant operational pain point.
+
+These findings should not be treated as completely untested assumptions for the current primary user.
+
+However, whether the same needs and priorities apply to a broader population of digital asset traders remains unvalidated.
+
+#### PA-12 — The Problem Extends Beyond the Primary User
+
+**Assumption:** Other digital asset traders may experience sufficiently similar problems for AssetOps to provide value beyond its current primary user.
+
+**Impact if false: Low for the current personal-use product; High for future market expansion**
+
+No broader user research has yet been conducted.
+
+The current discovery therefore supports the product for the primary user's workflow but does not establish broader product-market demand.
+
+### 8.10 Assumption Prioritization
+
+The assumptions that should receive the earliest validation are:
+
+1. **PA-01 — Sufficient Exchange Data Is Available**
+2. **PA-02 — Exchange Calculations Can Be Reliably Reconciled**
+3. **PA-08 — Required Mercado Bitcoin Data Can Be Accessed Programmatically**
+4. **PA-03 — Trading Activity Can Be Represented as Meaningful Trade Cycles**
+5. **PA-11 — Exchange Integration Can Be Implemented Securely**
+
+These assumptions have the greatest potential to invalidate or materially change the current product direction.
+
+Other assumptions may be validated progressively as the product moves through business analysis, integration discovery, architecture, implementation, and product validation.
 
 ---
 
