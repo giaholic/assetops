@@ -1771,6 +1771,189 @@ They are not sufficient to validate AssetOps as the solution or to establish bro
 
 ---
 
+## 14. Discovery Gate Decision
+
+### 14.1 Gate
+
+**Gate:** Problem Discovery  
+**Decision:** PROCEED WITH CONDITIONS  
+**Decision Owner:** Product Manager  
+**Inputs:** Problem Validation Criteria and Research Findings
+
+### 14.2 Decision
+
+The current discovery provides sufficient evidence to justify continued investigation of the AssetOps product opportunity for the current primary user.
+
+The decision is therefore:
+
+**PROCEED WITH CONDITIONS**
+
+This decision confirms that the identified problem is sufficiently understood and meaningful to justify moving beyond problem discovery.
+
+It does not validate AssetOps as the correct solution and does not authorize unrestricted implementation.
+
+### 14.3 Decision Rationale
+
+The decision is supported by the following findings:
+
+1. **The problem is observable.**  
+   The primary user currently cannot determine the complete realized financial result of her trading activity with the desired level of confidence using the existing workflow.
+
+2. **The problem is meaningful.**  
+   Confidence in realized trading results was identified as the user's highest-importance outcome.
+
+3. **Existing behavior demonstrates demand for a solution.**  
+   The user has already created and maintains a custom spreadsheet to compensate for analytical needs not sufficiently addressed by the current exchange workflow.
+
+4. **The current workflow remains insufficient.**  
+   Mercado Bitcoin provides the operational transaction environment while the spreadsheet provides customized analysis, requiring manual reconciliation between the two contexts.
+
+5. **The problem produces observable consequences.**  
+   These include manual reconciliation, uncertainty about quantities and results, iterative scenario calculations, and limited confidence in higher-level asset and portfolio analysis.
+
+6. **The problem has been investigated beyond its initial framing.**  
+   Discovery indicates that the core need is not simply workflow automation or interface consolidation. Reliability and interpretability of trading information represent the stronger user need.
+
+7. **The analytical problem extends beyond isolated orders.**  
+   Further investigation must consider transactions, positions, realized results, asset-level performance, and portfolio-level performance.
+
+### 14.4 Conditions for Proceeding
+
+The Proceed decision is conditional on validating several critical assumptions before the product direction is considered ready for implementation.
+
+#### Condition 1 — Required Exchange Data
+
+It must be demonstrated that sufficiently complete and reliable exchange data can be obtained to support the calculation of actual trading results.
+
+Related assumptions:
+
+- PA-01 — Sufficient Exchange Data Is Available.
+- PA-08 — Required Mercado Bitcoin Data Can Be Accessed Programmatically.
+
+#### Condition 2 — Financial Reconciliation
+
+It must be demonstrated that material transaction calculations can be understood and reconciled with the exchange with sufficient reliability.
+
+This includes investigation of:
+
+- Fees.
+- Quantities.
+- Execution values.
+- Precision.
+- Rounding.
+- Other exchange rules that materially affect realized results.
+
+Related assumption:
+
+- PA-02 — Exchange Calculations Can Be Reliably Reconciled.
+
+#### Condition 3 — Position and Realized-Result Methodology
+
+A consistent methodology must be established for representing trading activity involving:
+
+- Multiple purchases.
+- Aggregated positions.
+- Partial sales.
+- Partial executions.
+- Additional purchases before a position is fully disposed.
+- Cancelled and replacement orders.
+
+Related assumption:
+
+- PA-03 — Trading Activity Can Be Represented as Meaningful Trade Cycles.
+
+#### Condition 4 — Secure Data Access
+
+The required exchange integration must be achievable without unacceptable credential, account-access, or sensitive-data risks.
+
+Related assumption:
+
+- PA-11 — Exchange Integration Can Be Implemented Securely.
+
+### 14.5 What This Gate Authorizes
+
+This gate authorizes continued work on:
+
+- Product definition.
+- Business-rule discovery.
+- Requirements analysis.
+- Mercado Bitcoin integration discovery.
+- Data investigation.
+- Financial calculation validation.
+- Position and trade-cycle modeling.
+- UX exploration.
+- Architecture investigation.
+- Security analysis.
+- Technical feasibility validation.
+- MVP definition and prioritization, subject to validated findings.
+
+The purpose of these activities is to determine whether a viable solution can be defined.
+
+### 14.6 What This Gate Does Not Authorize
+
+This gate does not yet authorize treating the proposed solution as validated.
+
+Specifically, it does not establish that:
+
+- AssetOps is the correct solution.
+- ServiceNow is the correct long-term architecture.
+- Mercado Bitcoin APIs provide all required information.
+- Current spreadsheet formulas are correct.
+- Required financial calculations can be reproduced reliably.
+- A specific position-cost methodology has been selected.
+- Automated trading should be implemented.
+- The product can improve or guarantee investment returns.
+- The product addresses a validated broader market.
+- Development should begin before critical readiness conditions are satisfied.
+
+### 14.7 Reconsideration Triggers
+
+The Product Manager should reconsider the current product direction if subsequent discovery demonstrates that:
+
+- Required transaction data cannot be obtained with sufficient completeness or reliability.
+- Material financial results cannot be reconciled with the exchange with sufficient confidence.
+- No viable methodology can represent positions and realized results for the user's trading behavior.
+- Required account access introduces unacceptable security risks.
+- An existing solution is identified that satisfies the user's needs sufficiently and materially changes the rationale for a custom solution.
+- New evidence demonstrates that the current problem framing is materially incorrect.
+
+Depending on the finding, the appropriate response may be:
+
+**Proceed**  
+Continue when critical assumptions are validated.
+
+**Pivot**  
+Change the solution direction, integration approach, product scope, analytical model, or architecture while preserving a validated underlying problem.
+
+**Stop**  
+Stop the current product direction if the core value proposition cannot be delivered reliably or the identified need no longer justifies a custom solution.
+
+### 14.8 Scope of Validation
+
+This gate applies only to the current primary-user problem discovery.
+
+It does not represent:
+
+- Market validation.
+- Product-market fit.
+- Commercial validation.
+- Multi-user research validation.
+- Solution validation.
+- Technical readiness.
+- Release readiness.
+
+These require separate evidence and subsequent gates.
+
+### 14.9 Gate Result
+
+**DISCOVERY GATE: PROCEED WITH CONDITIONS**
+
+The problem is sufficiently validated for the current primary user to justify continued product and solution discovery.
+
+The next phase should focus on converting the validated problem understanding into a clearer product definition while prioritizing validation of the critical assumptions that could invalidate or materially change the proposed solution direction.
+
+---
+
 ## 12. Current Trading Goals and Behaviors
 
 The user currently follows a small-value trading strategy while learning and validating the process.
