@@ -1381,6 +1381,170 @@ This represents the percentage return calculated for a completed buy/sell cycle.
 
 ---
 
+## 12. Problem Validation Criteria
+
+Problem validation determines whether the identified user problem is sufficiently supported by evidence to justify continued product investigation.
+
+It does not validate AssetOps as the solution, confirm technical feasibility, establish a broader market opportunity, or prove that the proposed product can improve investment performance.
+
+The current validation scope is limited to the primary user's documented workflow.
+
+### 12.1 PVC-01 — The Problem Is Observable
+
+**Criterion**
+
+The primary user must demonstrate or describe a recurring situation in which she cannot determine the complete financial result of her trading activity with sufficient confidence using her current workflow.
+
+**Current evidence**
+
+The user currently relies on a custom spreadsheet to calculate estimated trading results and has reported that these calculations cannot be independently reconciled with complete confidence against actual exchange outcomes.
+
+**Current status: Supported**
+
+### 12.2 PVC-02 — The Problem Is Important to the User
+
+**Criterion**
+
+Reliable understanding of realized trading results must represent a meaningful user outcome rather than a minor convenience.
+
+**Current evidence**
+
+The user identified confidence in realized trade results as the most important outcome among the currently identified needs.
+
+The user wants to understand whether trading activity produced a positive or negative result and by how much.
+
+**Current status: Supported**
+
+### 12.3 PVC-03 — The Current Workflow Requires a Workaround
+
+**Criterion**
+
+The user's current behavior should demonstrate that additional effort is already being invested to compensate for the identified problem.
+
+**Current evidence**
+
+The user created and maintains a custom spreadsheet for transaction planning, calculations, estimated trade results, historical tracking, and analytical views that are not sufficiently addressed by her current exchange workflow.
+
+The spreadsheet therefore represents an existing user-created workaround.
+
+**Current status: Supported**
+
+### 12.4 PVC-04 — The Current Solution Does Not Fully Satisfy the Need
+
+**Criterion**
+
+The combination of solutions currently used by the primary user must leave a meaningful portion of the identified need unresolved.
+
+**Current evidence**
+
+Mercado Bitcoin provides the operational environment for trading, while the spreadsheet provides customized planning and analysis.
+
+The user currently reconciles information between these contexts manually and still cannot confirm the complete realized trade result with the desired level of confidence.
+
+**Current status: Supported for the current workflow**
+
+This criterion does not establish that no existing third-party product or alternative exchange already addresses the problem.
+
+### 12.5 PVC-05 — The Problem Produces Meaningful Consequences
+
+**Criterion**
+
+The problem should create observable consequences in the user's current workflow or ability to evaluate trading activity.
+
+**Current evidence**
+
+Observed consequences include:
+
+- Repeated manual reconciliation.
+- Uncertainty about sellable quantities.
+- Difficulty confirming realized results.
+- Trial-and-error transaction planning.
+- Limited ability to evaluate results across assets.
+- Limited ability to understand realized and portfolio-value performance over time.
+
+**Current status: Supported**
+
+### 12.6 Problem Validation Boundary
+
+The following are not required to establish that the current primary-user problem exists:
+
+- Confirmation that Mercado Bitcoin APIs provide all required data.
+- Selection of a trade-position cost methodology.
+- Validation of fee, precision, or rounding rules.
+- Confirmation that ServiceNow is technically suitable.
+- Confirmation that AssetOps can solve the problem.
+- Evidence that other traders experience the same problem.
+- Evidence that no competing product already solves the problem.
+- Evidence that better information will increase investment returns.
+
+These questions concern solution viability, technical feasibility, business rules, or market validation and should be evaluated separately.
+
+### 12.7 Decision Criteria
+
+Based on the current discovery scope, the problem-validation decision should use three possible outcomes.
+
+#### Proceed
+
+Proceed when:
+
+- The problem is observable.
+- The problem is meaningful to the primary user.
+- Current behavior demonstrates an existing workaround.
+- The current workflow does not fully satisfy the identified need.
+- The problem creates meaningful consequences.
+
+A Proceed decision means that further investigation of possible solutions is justified.
+
+It does not authorize implementation or imply that the current proposed solution is viable.
+
+#### Pivot
+
+Pivot the problem definition when additional evidence shows that:
+
+- The originally identified core problem is primarily a symptom of another problem.
+- Another user outcome is materially more important.
+- The current framing does not accurately represent the user's behavior.
+- New evidence substantially changes the understanding of the problem.
+
+#### Stop
+
+Stop further investigation of this problem when evidence demonstrates that:
+
+- The user can already satisfy the identified need with sufficient confidence and acceptable effort.
+- The problem is not meaningful enough to justify further investigation.
+- The observed workaround is unrelated to the proposed problem.
+- The problem no longer occurs or has been incorrectly characterized.
+
+Technical inability to implement AssetOps alone should not be interpreted as evidence that the user problem does not exist.
+
+### 12.8 Current Problem Validation Assessment
+
+Based on the discovery conducted with the current primary user:
+
+| Validation Criterion | Current Assessment |
+| --- | --- |
+| PVC-01 — Problem is observable | Supported |
+| PVC-02 — Problem is important | Supported |
+| PVC-03 — Workaround exists | Supported |
+| PVC-04 — Current solution is insufficient | Supported for current workflow |
+| PVC-05 — Meaningful consequences exist | Supported |
+
+**Current decision: PROCEED with further discovery and solution validation.**
+
+This decision validates continued investigation of the problem for the current primary user.
+
+It does not yet validate:
+
+- AssetOps as the correct solution.
+- ServiceNow as the correct implementation platform.
+- Mercado Bitcoin integration feasibility.
+- Calculation correctness.
+- Product-market fit.
+- Commercial viability.
+- Broader market demand.
+
+---
+
 ## 12. Current Trading Goals and Behaviors
 
 The user currently follows a small-value trading strategy while learning and validating the process.
