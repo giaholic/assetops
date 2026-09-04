@@ -2,13 +2,17 @@
 
 ## 1. Product Vision
 
-AssetOps is a digital asset portfolio and trade management application built on ServiceNow and integrated with the Mercado Bitcoin API.
+AssetOps is a personal digital asset portfolio and trade management application designed to provide a centralized and structured way to manage the complete trading lifecycle, from portfolio monitoring and trade analysis to transaction planning and execution.
 
-The product aims to provide a centralized and structured experience for monitoring digital assets, tracking transactions and trade cycles, calculating trading costs and potential results, analyzing portfolio performance, and supporting the planning of future orders.
+The product aims to reduce the manual effort and operational friction involved in managing digital asset trades, improve visibility into portfolio positions and their evolution over time, and enable faster execution of trading strategies based on reliable account, transaction, fee, and market data.
 
-AssetOps is intended to reduce the manual work currently required to manage digital asset trades across Mercado Bitcoin, email notifications, and spreadsheets.
+In its current implementation, AssetOps is built on ServiceNow and integrated with Mercado Bitcoin for personal use. The product concept, however, is independent from this implementation architecture and could evolve to support a broader audience through a different technology stack.
 
-The product provides calculations, historical information, and scenario analysis to support the user's decision-making process. It does not automate investment decisions or guarantee investment returns.
+AssetOps combines three core product areas: portfolio management, trade management, and trade planning and analysis.
+
+The initial product will focus on consolidating information, supporting analysis, and improving the management of trading activities. Future capabilities may introduce user-defined rule-based automation, allowing AssetOps to execute predetermined actions when explicitly configured conditions are met.
+
+In a longer-term horizon, autonomous decision-making based on market conditions and risk analysis may be explored. This remains a future product hypothesis and is not part of the current product scope.
 
 ---
 
