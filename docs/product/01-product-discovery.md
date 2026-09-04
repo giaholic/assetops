@@ -426,13 +426,98 @@ They should remain separate from directly observed pain points until supporting 
 
 ## 6. Existing Solutions
 
-The primary existing solution is the Mercado Bitcoin platform itself.
+The primary user currently relies on a combination of Mercado Bitcoin and a custom spreadsheet to execute, plan, track, and analyze trading activity.
 
-The user also maintains a custom spreadsheet to complement the exchange by tracking transactions, calculating fees, planning future orders, and calculating trade results.
+These tools address different parts of the workflow but do not currently provide the user with a single reliable way to evaluate the complete financial result of a trade cycle.
 
-AssetOps is not intended to replace Mercado Bitcoin as an exchange.
+### 6.1 Mercado Bitcoin
 
-Instead, it explores how ServiceNow can be used as an application platform to integrate exchange data with personalized portfolio management, trade tracking, calculations, and decision-support capabilities.
+Mercado Bitcoin is the exchange currently used by the primary user to perform digital asset transactions.
+
+In the user's current workflow, the platform is used for:
+
+- Market and price-chart observation.
+- Buy and sell order configuration.
+- Limit orders.
+- Post-only order configuration.
+- Order submission and cancellation.
+- Balance and available-quantity verification.
+- Order execution.
+- Order-history consultation.
+- Transaction and account information.
+- CSV statement export.
+
+The user primarily uses the Pro trading interface on the web because she perceives it as providing the information and order controls most appropriate for her current trading workflow.
+
+Mercado Bitcoin therefore fulfills the operational role of executing and recording the actual exchange transactions.
+
+#### Observed User Experience Gaps
+
+For the user's current workflow, accessing and interpreting historical trading information requires significant navigation across the platform.
+
+The user also considers the available CSV statement insufficiently detailed for independently reconstructing and evaluating complete trade cycles using her current process.
+
+Most importantly, the user has not found a sufficiently clear way within her current use of the platform to associate purchases and subsequent sales into trade cycles and determine the resulting net monetary and percentage outcome after applicable transaction costs.
+
+The user would also like better historical portfolio visualization on the web interface. Some portfolio visualization is available in the mobile experience, but the user currently considers the mobile interface less suitable for configuring and executing her trades.
+
+These observations describe the user's current experience with the platform and should not be interpreted as a comprehensive assessment of all Mercado Bitcoin capabilities.
+
+### 6.2 Custom Spreadsheet
+
+The user created a custom spreadsheet as a workaround for analytical and planning needs that were not being sufficiently addressed by her existing Mercado Bitcoin workflow.
+
+The spreadsheet is currently used to:
+
+- Record planned and executed buy and sell transactions.
+- Associate transaction information across recurring trade cycles.
+- Estimate trading fees.
+- Estimate transaction totals.
+- Calculate potential selling prices.
+- Estimate monetary trade results.
+- Estimate percentage returns.
+- Maintain a custom transaction history.
+- Generate charts and aggregated views.
+- Observe metrics such as estimated return percentages and average results across recorded transactions.
+
+The spreadsheet provides analytical flexibility that the user has not found in her current exchange workflow.
+
+However, it depends on manually maintained data and formulas.
+
+Spreadsheet calculations do not always reproduce the values displayed by Mercado Bitcoin, requiring manual reconciliation between the two systems.
+
+As a result, the spreadsheet is useful for planning and estimation but does not currently provide the user with complete confidence that its calculated trade-cycle result matches the actual realized financial result.
+
+### 6.3 Current Solution Gap
+
+The user's current solution can be summarized as:
+
+Mercado Bitcoin  
+→ authoritative operational environment for configuring and executing trades
+
+Custom Spreadsheet  
+→ user-created planning, calculation, tracking, and analysis workaround
+
+Email  
+→ execution notification and workflow trigger
+
+The main gap exists between reliable transaction execution and reliable trade-cycle analysis.
+
+The exchange contains the operational transaction data, while the spreadsheet provides the customized calculations and analytical structure the user needs. The user currently reconciles these two contexts manually.
+
+This combination does not fully satisfy the user's most important identified outcome: confidently determining the actual net result of a completed trade cycle.
+
+### 6.4 Alternative Solutions
+
+The primary user has not yet evaluated alternative exchanges, portfolio-management applications, trading-analysis tools, crypto calculators, or other specialized products as potential solutions to the identified problem.
+
+Therefore, the current discovery does not support the conclusion that the identified need represents a broader market gap or that no existing product already addresses it.
+
+A broader competitive or alternative-solution analysis may be conducted later if required by the product strategy.
+
+The current conclusion is limited to the user's existing workflow:
+
+**The current combination of Mercado Bitcoin and a custom spreadsheet does not fully satisfy the primary user's identified need for reliable trade-cycle analysis.**
 
 ---
 
