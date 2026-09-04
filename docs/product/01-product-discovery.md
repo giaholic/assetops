@@ -1545,6 +1545,232 @@ It does not yet validate:
 
 ---
 
+## 13. Research Findings
+
+### 13.1 Research Scope
+
+The current research focused on understanding the existing trading workflow, needs, behaviors, pain points, workarounds, and desired outcomes of AssetOps' initial primary user.
+
+The research was qualitative and exploratory.
+
+It was conducted through a structured discovery conversation in which the participant described her current trading behavior and walked through the process used to plan, execute, track, and evaluate digital asset transactions.
+
+The investigation covered:
+
+- Market observation and trade planning.
+- Buy-order preparation and execution.
+- Post-execution tracking.
+- Sell planning and scenario analysis.
+- Sellable-quantity reconciliation.
+- Trade-result calculation.
+- Open-order reassessment.
+- Cancelled and replacement orders.
+- Partial executions.
+- Spreadsheet usage.
+- Exchange usage.
+- Portfolio-analysis needs.
+- Performance objectives.
+- Existing solution usage.
+- Alternative solutions previously explored.
+
+### 13.2 Participant Context
+
+The current research includes one participant.
+
+The participant is:
+
+- The initial primary user of AssetOps.
+- The creator of the current spreadsheet workaround.
+- The creator of the AssetOps project.
+- An active Mercado Bitcoin user.
+- Currently learning and experimenting with short-term digital asset trading.
+- Currently trading across more than 30 digital assets.
+
+Because the participant is also the product creator, findings may be influenced by prior knowledge of the proposed product direction.
+
+The research should therefore be interpreted as validation of the participant's own workflow and needs rather than validation of a broader market or user population.
+
+### 13.3 Key Research Findings
+
+#### RF-01 — The User Has Created an External Analytical Workaround
+
+The participant created a custom spreadsheet because her existing exchange workflow did not provide the analytical context she needed to understand and evaluate her trading activity.
+
+The spreadsheet is not used primarily as an alternative execution environment.
+
+Instead, it acts as an external analytical layer for:
+
+- Planning transactions.
+- Estimating quantities and fees.
+- Evaluating potential selling prices.
+- Estimating trade results.
+- Tracking transaction status.
+- Maintaining historical information.
+- Producing charts and aggregated metrics.
+
+This behavior demonstrates that the participant is already investing effort in compensating for an unmet analytical need.
+
+#### RF-02 — Confidence in Financial Results Is More Important Than Workflow Convenience
+
+The participant identified confidence in realized trading results as the most important current outcome.
+
+When asked to prioritize desired improvements, the participant ranked them as:
+
+1. Confidence in the realized result.
+2. Complete trade-cycle visibility.
+3. Confidence during trade planning.
+4. Reduction of manual reconciliation.
+
+This indicates that reducing manual work alone would not address the participant's primary need.
+
+The more important need is being able to understand and trust the financial result represented by the analytical process.
+
+#### RF-03 — Isolated Orders Do Not Match the User's Full Analytical Context
+
+The participant evaluates trading activity across related acquisition and disposal events rather than treating each order as analytically independent.
+
+For simple transactions, this can resemble a buy followed by a sell.
+
+For more complex activity involving multiple purchases and partial sales, the participant currently favors thinking in terms of an aggregated asset position that can later be reduced through sales.
+
+This suggests that order-level history alone may not provide the analytical context required by the participant.
+
+The appropriate financial methodology for representing aggregated positions has not yet been established.
+
+#### RF-04 — Trade Planning Is an Iterative Analytical Process
+
+The participant currently combines market observation with spreadsheet-based scenario calculations when deciding where to position orders.
+
+For sell planning, potential selling prices may be adjusted repeatedly until the spreadsheet indicates an acceptable estimated result.
+
+The participant may then adjust the target further based on current market conditions.
+
+This demonstrates that the current workflow includes an iterative scenario-analysis process rather than only transaction execution.
+
+The participant does not currently follow a formal or validated methodology for predicting market entry or exit points.
+
+#### RF-05 — Portfolio Analysis Depends on Reliable Lower-Level Trading Information
+
+The participant currently trades across more than 30 digital assets and wants to understand how different assets contribute to overall trading and portfolio performance.
+
+Desired analytical understanding includes:
+
+- Results by asset.
+- Historical trading performance.
+- Portfolio-value evolution.
+- Realized trading performance.
+- Unrealized changes in open positions.
+
+The participant wants realized trading performance and total portfolio-value performance to remain analytically separate.
+
+Reliable portfolio analysis therefore depends on trustworthy underlying transaction, position, and realized-result information.
+
+#### RF-06 — Analytical Uncertainty Creates More Friction Than System Switching
+
+The participant considers the fragmented use of Mercado Bitcoin, email, and the spreadsheet to be a relatively low-severity problem by itself.
+
+Higher-severity friction is associated with:
+
+- Manual reconciliation.
+- Uncertainty about sellable quantities.
+- Trial-and-error planning.
+- Difficulty confirming financial results.
+
+This indicates that consolidating systems into a single interface would not necessarily address the participant's primary problem unless the underlying information and calculations are sufficiently reliable.
+
+#### RF-07 — Alternative Solutions Have Not Yet Been Explored
+
+The participant has not evaluated other exchanges, portfolio-management applications, crypto-analysis tools, or specialized trading-analysis products as alternatives to the current workflow.
+
+Current research therefore demonstrates an unmet need within the participant's existing combination of Mercado Bitcoin and a custom spreadsheet.
+
+It does not demonstrate that the need is unmet by the broader market.
+
+### 13.4 Research Limitations
+
+The current research has several important limitations.
+
+#### Single Participant
+
+Research has been conducted with one primary participant.
+
+Findings should not be generalized to digital asset traders as a broader population.
+
+#### Participant and Product Creator Are the Same Person
+
+The participant is also the creator of AssetOps.
+
+This creates a potential confirmation-bias risk because the participant already has exposure to the proposed product concept and implementation direction.
+
+#### Self-Reported Workflow
+
+Much of the current evidence is based on the participant's description of her behavior and experience.
+
+The complete workflow has not yet been independently observed through contextual inquiry or instrumented behavioral data.
+
+#### Exchange Capabilities Have Not Been Independently Validated
+
+Statements about Mercado Bitcoin primarily describe the participant's current experience with the platform.
+
+The research has not yet independently verified the complete capabilities of the exchange, its APIs, fee methodology, precision rules, or alternative interfaces.
+
+#### Alternative Products Have Not Been Evaluated
+
+No competitive or alternative-solution research has yet established whether another product already addresses the identified need.
+
+#### Financial Methodologies Remain Unvalidated
+
+The research identified analytical needs involving positions, realized results, unrealized performance, partial sales, and multiple purchases.
+
+The appropriate financial or accounting methodologies for these calculations have not yet been established.
+
+#### No Outcome Measurement Yet
+
+The current research establishes behaviors, needs, pain points, and desired outcomes.
+
+It does not yet demonstrate that a proposed solution will reduce effort, improve calculation reliability, improve decision quality, or affect financial performance.
+
+### 13.5 Research Implications
+
+The research suggests that subsequent product investigation should prioritize:
+
+1. **Reliability before convenience**  
+   Any future solution direction should address confidence in financial results before focusing primarily on workflow consolidation or automation.
+
+2. **Financial context beyond isolated orders**  
+   Further investigation should determine how acquisition activity, positions, disposals, and realized results should be represented.
+
+3. **Clear separation of estimated and actual information**  
+   The current workflow mixes planning calculations with values later reconciled against the exchange. Future investigation should preserve a clear distinction between planned, estimated, executed, and realized information.
+
+4. **Trade-level foundations before portfolio-level conclusions**  
+   Asset and portfolio analysis should depend on sufficiently reliable underlying transaction and position information.
+
+5. **Separate realized and portfolio-value performance**  
+   These represent different analytical concepts for the participant and should not be combined into a single performance measure without appropriate methodology.
+
+6. **Validate critical external dependencies early**  
+   Exchange data availability, calculation rules, and integration feasibility materially affect whether the identified analytical needs can be addressed reliably.
+
+7. **Avoid broader market claims**  
+   Additional users and alternative solutions should be researched before treating AssetOps as a validated market opportunity.
+
+### 13.6 Research Summary
+
+Current research supports the conclusion that the primary user has a meaningful unmet need in her existing workflow around understanding and evaluating the financial results of recurring digital asset trading activity.
+
+The strongest finding is that **reliability and interpretability of trading results matter more to the participant than simply reducing the number of manual steps or systems involved**.
+
+The participant has already created a spreadsheet workaround, but the separation between exchange information and externally maintained calculations prevents her from achieving the desired level of confidence in the resulting analysis.
+
+The research also indicates that the problem extends analytically beyond individual orders. The participant wants to understand positions, realized results, asset-level performance, and portfolio evolution while keeping realized trading performance distinct from changes in total portfolio value.
+
+These findings are sufficient to support a Product Manager decision about whether further solution discovery is justified for the current primary user.
+
+They are not sufficient to validate AssetOps as the solution or to establish broader product-market demand.
+
+---
+
 ## 12. Current Trading Goals and Behaviors
 
 The user currently follows a small-value trading strategy while learning and validating the process.
