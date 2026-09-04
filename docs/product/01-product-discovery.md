@@ -813,87 +813,89 @@ Other assumptions may be validated progressively as the product moves through bu
 
 ---
 
-## 9. Questions
+## 9. Discovery Questions
 
-The following questions need to be validated during discovery.
+The following questions represent important unknowns that require further investigation before related product decisions can be considered validated.
 
-### 9.1 Product and Portfolio Questions
+Questions are prioritized according to their potential impact on product viability and are expected to be answered progressively through product discovery, business analysis, integration research, architecture, security analysis, implementation, and validation.
 
-- Which portfolio information is most valuable to the user?
-- How frequently should portfolio data be synchronized?
-- Which historical information should be stored?
-- How should portfolio performance be calculated?
-- Which Mercado Bitcoin API endpoints are required?
-- What limitations exist in the Mercado Bitcoin API?
-- How should API failures and unavailable data be handled?
-- What security controls are required for API credentials?
-- Which ServiceNow capabilities are best suited for each requirement?
+### 9.1 P0 — Product Viability
 
-### 9.2 Trade Calculation Questions
+- **DQ-01:** What exchange data is required to determine the realized net result of a completed trade?
+- **DQ-02:** Does Mercado Bitcoin make all required data available through sufficiently reliable sources?
+- **DQ-03:** Which of the required data is available programmatically through Mercado Bitcoin APIs?
+- **DQ-04:** Are actual execution fees available directly, or must any fees be derived?
+- **DQ-05:** What precision and rounding rules materially affect quantities, fees, transaction totals, and realized results?
+- **DQ-06:** Can external calculations be reconciled with Mercado Bitcoin transaction results with sufficient reliability?
+- **DQ-07:** Can the required exchange access be implemented with acceptable security and permissions?
 
-- How does the user currently calculate the target selling price?
-- Does the current calculation correctly account for all trading fees?
-- How should multiple purchases of the same asset be handled?
-- Should AssetOps use average cost, individual lots, or another cost-basis method?
-- How should partial sales be handled?
-- How should previous sales affect the remaining position?
-- Should the user specify a desired percentage return, desired monetary return, or both?
-- Should AssetOps calculate a break-even selling price?
-- Should the application distinguish between realized and unrealized results?
-- Which transaction information can be retrieved directly from Mercado Bitcoin?
-- Can the API provide enough historical information to reconstruct the user's existing portfolio and trade history?
+### 9.2 P1 — Trade Cycle Intelligence
 
-### 9.3 Order Execution and Notification Questions
+- **DQ-08:** What constitutes a trade cycle for the purposes of AssetOps analysis?
+- **DQ-09:** How should multiple purchases of the same asset be handled when subsequent sales occur?
+- **DQ-10:** How should partial sales be associated with previous purchases?
+- **DQ-11:** How should an additional purchase made before an existing position is fully sold affect the trade cycle?
+- **DQ-12:** How should partial executions be represented?
+- **DQ-13:** How should cancelled and replacement orders be represented and related?
+- **DQ-14:** Which values should be considered planned, estimated, executed, and realized?
+- **DQ-15:** Which source should be authoritative for each transaction attribute?
+- **DQ-16:** What level of numerical reconciliation is required for a trade result to be considered reliable?
 
-- Can AssetOps determine directly from the Mercado Bitcoin API when an order has been executed?
-- If execution information is available through the API, is the email notification still necessary for the application workflow?
-- Should email remain only as an external confirmation mechanism?
-- How quickly does an updated order execution status become available through the API?
-- Can orders be partially executed?
-- How should partial executions be represented?
-- How should cancelled and replaced orders be related to one another?
+### 9.3 P1 — Portfolio Intelligence
 
-### 9.4 Precision and Calculation Questions
+- **DQ-17:** How should realized results from multiple trade cycles be aggregated by asset?
+- **DQ-18:** What information is required to represent the user's current position in each asset?
+- **DQ-19:** How should realized and unrealized results be distinguished?
+- **DQ-20:** How should portfolio value and its evolution over time be calculated?
+- **DQ-21:** Which asset-level metrics help the user evaluate where trading activity, capital, and attention are producing results?
+- **DQ-22:** Which portfolio-level metrics are required to evaluate performance against user-defined objectives?
+- **DQ-23:** How should realized trading performance be calculated over a defined period?
+- **DQ-24:** How should total portfolio value and portfolio value performance be calculated over a defined period?
+- **DQ-25:** How should realized and unrealized performance be presented separately to avoid double counting or misinterpretation?
+- **DQ-26:** What should define the beginning and ending portfolio value for daily performance measurement?
+- **DQ-27:** How should deposits, withdrawals, transfers, and other external capital movements be distinguished from investment performance?
+- **DQ-28:** How should user-defined performance targets be evaluated independently against realized trading performance and total portfolio value performance?
 
-- What quantity precision does Mercado Bitcoin support for each asset or trading pair?
-- What price precision does Mercado Bitcoin support for each trading pair?
-- Are there minimum quantity increments?
-- Are there minimum price increments?
-- What rounding rules are applied?
-- At which stage are fees calculated?
-- In which asset or currency is each fee charged?
-- Does precision vary by trading pair?
-- Can precision rules be retrieved through the API?
-- Why do current spreadsheet calculations sometimes differ from Mercado Bitcoin calculations?
-- How should AssetOps normalize calculated values before comparing them with exchange values?
+### 9.4 P2 — Trade Planning
 
-### 9.5 Trade Cycle Questions
+- **DQ-29:** Which inputs are required to evaluate a hypothetical buy or sell scenario?
+- **DQ-30:** Can applicable fees and exchange rules be incorporated reliably into pre-trade estimates?
+- **DQ-31:** Which differences between estimated and actual execution results are unavoidable?
+- **DQ-32:** What information does the user need when comparing alternative buy or sell prices?
+- **DQ-33:** How should user-defined target returns be represented without implying that the target will be achieved?
 
-- What rules does the user currently use to determine a desired positive return?
-- Is the target expressed as a percentage, monetary amount, or both?
-- Should fees be included when determining the target sell price?
-- Should taxes be considered separately from exchange fees?
-- What should happen when several purchases of the same asset occur at different prices?
-- What should happen when only part of a position is sold?
-- How should a new buy target be calculated after a sale?
-- Should a new buy target be based on the previous selling price?
-- Should the user define a desired price decrease before re-entry?
-- Should AssetOps provide multiple hypothetical buy scenarios rather than one recommended buying price?
-- How should AssetOps represent a complete buy/sell trade cycle?
-- How should cancelled and replacement orders affect the trade cycle?
+### 9.5 P2 — Historical Data
 
-### 9.6 Trading Fee Requirements to Validate
+- **DQ-34:** How much historical transaction and execution data is available?
+- **DQ-35:** Can historical transactions be reconstructed with sufficient information to calculate reliable results?
+- **DQ-36:** If complete historical reconstruction is not possible, what should define the starting point for reliable AssetOps data?
 
-- AssetOps should retrieve the current maker fee for a trading pair whenever possible.
-- AssetOps should retrieve the current taker fee for a trading pair whenever possible.
-- Fee rates should not be hard-coded.
-- Fee information should be associated with the corresponding trading pair.
-- Planned transactions should use applicable fee information to estimate transaction costs.
-- Completed transactions should store the actual fee returned by Mercado Bitcoin whenever available.
-- Completed executions should store whether the execution was maker or taker whenever this information is available.
-- Completed executions should store the actual fee rate returned by Mercado Bitcoin whenever available.
-- Estimated and actual fees should be stored and displayed separately.
-- AssetOps should be able to identify differences between estimated and actual transaction costs.
+### 9.6 P2 — Current Workflow and User Experience
+
+- **DQ-37:** Which steps in the current workflow consume the most time or require the most repeated reconciliation?
+- **DQ-38:** Which information currently requires the most navigation to retrieve?
+- **DQ-39:** Which analytical views are currently most useful in the user's spreadsheet?
+- **DQ-40:** Which portfolio and performance visualizations would materially improve the user's ability to understand trading results?
+
+### 9.7 P3 — Market and Alternative Solutions
+
+- **DQ-41:** Which alternative exchanges are relevant to the user's current trading behavior?
+- **DQ-42:** How do relevant alternatives compare in trading fees, supported order types, execution capabilities, data availability, and usability?
+- **DQ-43:** Do existing portfolio or crypto trade-analysis products already provide reliable trade-cycle analysis for the user's workflow?
+- **DQ-44:** Would an existing product or alternative exchange solve the identified problem without requiring a custom application?
+- **DQ-45:** Do other digital asset traders experience sufficiently similar problems to justify exploring AssetOps beyond the current primary user?
+
+### 9.8 Discovery Priority
+
+The earliest discovery effort should focus on the P0 questions because negative findings may invalidate or materially change the current product direction.
+
+P1 questions define how the core Trade Cycle Intelligence and Portfolio Intelligence opportunities should work conceptually.
+
+P2 questions influence planning, historical reconstruction, operational efficiency, and user experience but are not currently considered fundamental to initial product viability.
+
+P3 questions concern broader alternatives and potential market expansion. They are important for determining whether AssetOps represents a broader product opportunity but do not currently block validation of the personal-use product concept.
+
+Discovery questions should remain open until supported by sufficient evidence. Proposed answers should not be treated as validated product requirements until the corresponding investigation has been completed.
 
 ---
 
