@@ -18,27 +18,15 @@ In a longer-term horizon, autonomous decision-making based on market conditions 
 
 ## 2. Problem Statement
 
-Managing digital asset trades currently requires significant manual work.
+The primary user performs recurring buy and sell operations on Mercado Bitcoin with the goal of achieving a positive net result across each trade cycle.
 
-After buying or selling an asset on Mercado Bitcoin, the user manually records each transaction in a spreadsheet. The spreadsheet contains calculated fields used to track purchase prices, transaction values, trading fees, potential selling prices, and the financial result of completed trades.
+To plan a trade, the user needs to understand the complete financial context of the operation, including the effective acquisition cost, available asset quantity, trading fees, potential residual balances (dust), target selling price, and expected net result after the transaction.
 
-One of the main use cases is determining an appropriate target selling price. After purchasing an asset, the user uses spreadsheet calculations to estimate the price at which a limit sell order could be placed in order to achieve a desired positive return after trading fees.
+Although the trading activity itself takes place on Mercado Bitcoin, the information required to evaluate the complete trade cycle is not currently available to the user in a sufficiently consolidated and actionable view. As a result, the user relies on a manually maintained spreadsheet to combine transaction data and perform the calculations required to plan and evaluate trades.
 
-Once a sell order is executed, the user must repeat the process and determine a potential price for a new buy order. However, the user does not currently have a well-defined method for determining this new buying price.
+This fragmented process makes it difficult to confidently determine the expected net result of a transaction before executing it. Manual data entry and calculations also introduce the risk of outdated or inconsistent information, calculation errors, and differences between the expected and actual result after fees, quantity adjustments, precision, and rounding are considered.
 
-This workflow creates several problems:
-
-- Transactions need to be recorded manually.
-- Calculations depend on maintaining the spreadsheet correctly.
-- Purchase, sale, and market information are separated across different systems.
-- Determining a target selling price requires additional manual analysis.
-- Determining a new target buying price is not currently based on a clearly defined rule.
-- The user needs to move between Mercado Bitcoin, email, and the spreadsheet throughout the trade cycle.
-- Trading fees must be manually considered when estimating transaction results.
-- Differences in numeric precision and rounding may cause spreadsheet calculations to differ from values accepted or calculated by Mercado Bitcoin.
-- There is a risk of inconsistent or missing data due to manual entry.
-
-AssetOps aims to reduce this manual work by retrieving portfolio, order, execution, fee, and market data directly from Mercado Bitcoin whenever possible and using that data to support portfolio management and trade analysis inside ServiceNow.
+The core problem is therefore not simply the amount of manual work involved, but the **lack of a consolidated and reliable view of the information required to evaluate and manage a complete trade cycle with confidence.**
 
 ---
 
