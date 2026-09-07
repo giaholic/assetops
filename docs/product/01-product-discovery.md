@@ -2204,3 +2204,121 @@ When evaluating a proposed capability, the team should consider:
 5. Does it preserve the reliability and traceability required by the Product Principles?
 
 A proposed capability that does not materially support a product goal should require explicit justification before being prioritized.
+
+## 18. Detailed As-Is Process
+
+This section describes the current trading process in operational detail based on the workflow observed and reported during discovery.
+
+Its purpose is to make current activities, systems, decision points, manual calculations, information states, and known uncertainties explicit before defining a future-state process or formal business rules.
+
+The process documented here represents current behavior rather than desired AssetOps behavior. Unvalidated calculations, assumptions, and unresolved exchange behavior should therefore remain identified as such.
+
+### 18.1 Process Participants and Systems
+
+The current process is performed by a single primary user and relies on three external components with different responsibilities.
+
+#### User
+
+The user performs market analysis, plans transactions, places and manages orders, updates the spreadsheet, interprets execution notifications, and decides when to continue, cancel, replace, or reassess trading activity.
+
+#### Mercado Bitcoin
+
+Mercado Bitcoin is the current execution environment for trading activity.
+
+The user treats values presented by Mercado Bitcoin as operationally authoritative when they differ from spreadsheet estimates. The current discovery does not yet establish which specific exchange data should be considered authoritative for every financial attribute or calculation.
+
+#### Spreadsheet
+
+The spreadsheet is a user-created planning, estimation, and tracking tool.
+
+It is used to prepare transactions, estimate quantities, fees and expected results, record execution-related information, and support analysis. Its formulas and reconstructed financial results have not yet been independently validated and should not be treated as authoritative business rules.
+
+#### Email Notifications
+
+Execution emails currently act as workflow triggers that inform the user that trading activity has executed and prompt the next manual step.
+
+They are not currently established as the authoritative source of execution or financial data.
+
+### 18.2 Pre-Buy Analysis and Buy Planning
+
+Before placing a buy order, the user analyzes Mercado Bitcoin charts across multiple horizons to identify exploratory potential entry points.
+
+The user then creates a planned line in the spreadsheet to represent the intended buy activity. This planning step includes estimated price, estimated value in BRL, estimated quantity, estimated fee, and precision.
+
+The spreadsheet values are compared with the values presented by Mercado Bitcoin before confirmation. When there is a difference, the current discovery indicates that the user tends to use the values presented by the exchange.
+
+At this stage, Planned should be understood as the user's intent to buy, while Estimated should be understood as the spreadsheet-based calculation or expectation before execution. These are distinct states in the current process.
+
+### 18.3 Buy Order Placement and Execution
+
+The predominant buy-order pattern currently observed is Limit + Post Only.
+
+The user submits the order to Mercado Bitcoin and the order can remain open without a fixed timeout. While it remains open, the user may re-evaluate the chart and the margin, then maintain, cancel, recalculate, or replace the order.
+
+Execution email notifications function as workflow triggers that signal completion and prompt the next manual step.
+
+After a buy executes, the user updates the spreadsheet manually, including date and status. The current discovery does not establish a systematic post-execution reconciliation process for confirming all financial details against the exchange.
+
+States or behaviors not yet observed should not be inferred here.
+
+### 18.4 Sell Planning
+
+Sell planning currently begins after the buy activity and is oriented toward selling 100% of the position or quantity related to the activity.
+
+The spreadsheet estimates the quantity that can be sold after accounting for the buy fee. The current discovery indicates an unvalidated current-state assumption for the sell fee calculation of `quantity × sell price × 0.003`; this is not a business rule.
+
+The spreadsheet also calculates total, profit, and percentage. The user iteratively adjusts the sell price until the expected result becomes positive and may increase the target price further if market conditions appear to support it.
+
+The planned sell quantity is compared with the quantity that Mercado Bitcoin allows the user to sell at 100%. When there is a difference, the user currently copies the exchange value back into the spreadsheet.
+
+At this stage, Planned should be understood as the user's intent to sell, while Estimated should be understood as the spreadsheet-based calculation or expectation before execution. These are distinct states in the current process.
+
+### 18.5 Sell Order Placement and Execution
+
+The sell order is submitted to Mercado Bitcoin after planning is complete.
+
+If the sell order remains open, the current re-evaluation pattern is the same as for buys: the user may continue waiting, cancel, recalculate, or replace the order. No fixed timeout has been established.
+
+Execution email notifications again function as workflow triggers and prompt manual update activity.
+
+After a sell completes, the user updates the spreadsheet manually and then begins planning the next buy. The current discovery does not provide a verified and reliable independent reconstruction of the realized net result from the process as a whole.
+
+### 18.6 Exceptional and Incomplete Order States
+
+A partial fill was observed at least once, and in that instance the user waited for completion.
+
+The current discovery does not establish a formal process for partial fills that remain open for an extended period.
+
+Cancelled and replaced orders are part of current re-evaluation behavior, but their detailed rules are not yet formalized.
+
+The current discovery does not justify assuming Mercado Bitcoin rules for partial execution, cancellation, replacement, fees, precision, or rounding beyond what has been observed.
+
+These items should be treated as gaps or unknowns that require further analysis.
+
+### 18.7 Current Information-State Flow
+
+The current process can be described as a progression through four information states:
+
+PLANNED → ESTIMATED → EXECUTED → REALIZED
+
+Planned is the user's intention. Estimated is the calculation or expectation before execution. Executed is what actually occurred on the exchange. Realized is the financial result derived from completed activity.
+
+The current process does not guarantee a reliable or reconciled transition across all of these states.
+
+### 18.8 Manual Handoffs and Reconciliation Points
+
+The key handoffs in the current process are Mercado Bitcoin → Spreadsheet, Email → User, User → Spreadsheet, Spreadsheet → Mercado Bitcoin during planning, and Mercado Bitcoin → Spreadsheet when values diverge.
+
+The work of comparison, update, reconstruction, and financial interpretation is manual.
+
+### 18.9 As-Is Gaps and Unresolved Rules
+
+The discovery leaves several rules unresolved: authoritative source by financial attribute, actual fee determination, precision and rounding, sellable quantity, reliable realized-result calculation, multiple purchases, partial sales, partial executions, cancelled or replacement orders, position and trade-cycle methodology, historical reconstruction, and the current dependence on email as a workflow trigger.
+
+These items should be distinguished as observed behavior, unvalidated current calculation or assumption, or unknown.
+
+### 18.10 As-Is Process Summary
+
+Analyze Market → Plan Buy → Estimate Values → Compare with Exchange → Place Buy Order → Wait/Reassess → Buy Executes → Update Spreadsheet → Plan Sell → Estimate Result → Compare Sellable Quantity → Place Sell Order → Wait/Reassess → Sell Executes → Update Spreadsheet → Start Next Cycle
+
+Cancelled orders, replacements, and partial executions can interrupt or deviate from this flow, and their rules remain incomplete in the current discovery.
