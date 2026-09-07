@@ -2552,3 +2552,101 @@ Later product design work should consider user flows for portfolio, transactions
 It should also account for loading, empty, error, and unresolved states where applicable, while exploring information architecture, navigation, and hierarchy.
 
 The journey should be validated with the user before design decisions are treated as definitive.
+
+## 21. Product Scope
+
+This section defines the conceptual boundaries of AssetOps. It is not equivalent to MVP scope.
+
+Something may be in scope for the product and still be out of scope for the first MVP.
+
+### 21.1 Scope Purpose and Boundary
+
+Product Scope defines what AssetOps is conceptually responsible for supporting.
+
+It does not determine the first release plan, delivery sequence, or MVP prioritization.
+
+### 21.2 In Scope — Reliable Transaction and Execution Context
+
+AssetOps is in scope to consolidate and structure transaction, order, and execution information needed to understand financial activity.
+
+It is also in scope to distinguish Planned, Estimated, Executed, and Realized states, and to present fees, quantities, prices, and other relevant inputs when those inputs are available and validated.
+
+Reconciliation and traceability are in scope when the necessary data and rules are sufficiently reliable.
+
+This scope does not assume the availability of data that has not yet been validated.
+
+### 21.3 In Scope — Position and Trade-Cycle Intelligence
+
+AssetOps is in scope to represent positions and meaningful trade-cycle context.
+
+This includes multiple purchases, partial activity, and the relationship between buys and sells when an appropriate methodology has been validated.
+
+Average cost, FIFO, and other methodologies are not chosen here.
+
+### 21.4 In Scope — Asset-Level Intelligence
+
+AssetOps is in scope to support understanding and comparison of results, positions, and performance by asset using reliable underlying financial fundamentals.
+
+### 21.5 In Scope — Portfolio-Level Intelligence
+
+AssetOps is in scope to support portfolio composition, evolution, and performance.
+
+The distinction between realized trading performance, unrealized information, and portfolio value performance should remain preserved, and external cash flows should be separated when applicable.
+
+### 21.6 In Scope — Trade Planning and Scenario Analysis
+
+AssetOps is in scope to support planning of potential actions using price, quantity, fees, and financial context.
+
+Expected outcomes should remain estimates or scenarios and must not be presented as predictions, recommendations, or guarantees.
+
+### 21.7 In Scope — Workflow and Reconciliation Support
+
+AssetOps is in scope to reduce manual reconstruction and reconciliation, support monitoring of order and execution states, and connect the financial context needed for decisions.
+
+Efficiency is a supporting outcome, not the primary basis for scope.
+
+### 21.8 In Scope — Historical and Ongoing Analysis
+
+AssetOps is in scope to support historical analysis when sufficiently reliable data can be obtained or reconstructed.
+
+Historical reconstruction is not a precondition for the concept to remain valid, but it remains dependent on data availability and quality.
+
+### 21.9 Out of Scope — Automated and Autonomous Trading
+
+Automated execution based on rules and autonomous decision-making are out of scope for the current product scope.
+
+They may be considered only as future possibilities under the progression Understand → Validate → Support → Automate.
+
+### 21.10 Out of Scope — Investment Prediction and Guaranteed Outcomes
+
+Market prediction, guaranteed profit or return, a promise of reaching 1% daily, and representing scenario analysis as certainty about the future are out of scope.
+
+### 21.11 Out of Scope — Unvalidated Financial or Exchange Behavior as Established Logic
+
+Rules for fees, precision, rounding, sellable quantity, cost basis, partial execution, cancellation, replacement, or similar behavior are out of scope as definitive logic until sufficiently validated.
+
+They cannot be added as facts or rules merely to complete the scope definition.
+
+### 21.12 Out of Scope — Broader Market/Product Claims
+
+Product-market fit, commercial viability, a validated problem for other users, superiority over other exchanges or tools, and the existence of a market gap are out of scope here.
+
+The current validation concerns the primary user only.
+
+### 21.13 Implementation Boundary
+
+ServiceNow and Mercado Bitcoin describe the current implementation and integration discovery context, but they do not define Product Scope conceptually.
+
+Technical feasibility remains subject to the Discovery Gate conditions already documented.
+
+### 21.14 Scope Dependencies and Conditions
+
+Product Scope depends on exchange or API data sufficiency, financial reconciliation, position and trade-cycle methodology, security, authoritative sources, fees, precision and rounding, exception-state behavior, and historical data availability.
+
+These dependencies remain unresolved in this section.
+
+### 21.15 Scope Summary
+
+Reliable Transaction Data → Position / Trade-Cycle Intelligence → Asset-Level Intelligence → Portfolio Intelligence → Better-Informed Trade Planning
+
+Workflow efficiency and reconciliation support span this chain, while automation and autonomous trading remain outside the current product scope.
