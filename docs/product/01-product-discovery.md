@@ -2322,3 +2322,111 @@ These items should be distinguished as observed behavior, unvalidated current ca
 Analyze Market → Plan Buy → Estimate Values → Compare with Exchange → Place Buy Order → Wait/Reassess → Buy Executes → Update Spreadsheet → Plan Sell → Estimate Result → Compare Sellable Quantity → Place Sell Order → Wait/Reassess → Sell Executes → Update Spreadsheet → Start Next Cycle
 
 Cancelled orders, replacements, and partial executions can interrupt or deviate from this flow, and their rules remain incomplete in the current discovery.
+
+## 19. To-Be Process
+
+This section describes the intended future process for AssetOps based only on the validated discovery findings, Product Principles, Product Goals, and documented As-Is process.
+
+The To-Be process is meant to preserve reliable and traceable financial information, connect the full trading lifecycle, reduce manual reconstruction, and support decision-making without treating convenience as more important than reliability.
+
+### 19.1 Future-State Process Objectives
+
+The future-state process should preserve trustworthy financial information, maintain traceability from input to result, and connect the complete lifecycle of trading activity.
+
+It should reduce the need for manual reconstruction by presenting connected context, validated calculations, and clear state transitions.
+
+It should also provide enough context for the user to make informed trading decisions while keeping reliability and validation ahead of convenience.
+
+### 19.2 Future-State Participants and Responsibilities
+
+The future-state process should distinguish responsibilities among the user, AssetOps, and Mercado Bitcoin.
+
+The user remains responsible for market judgment, trading decisions, and initiating actions.
+
+Mercado Bitcoin remains the execution and data environment for available exchange-side information.
+
+AssetOps consolidates, structures, calculates, reconciles, and presents information only when the necessary data and rules have been sufficiently validated. It should not present unvalidated calculations as authoritative.
+
+Email should not be treated as an authoritative source in the future-state process. If it remains part of the workflow, it should function only as a notification or trigger input, not as the source of truth.
+
+### 19.3 Information-State Lifecycle
+
+The future-state process should preserve the lifecycle PLANNED → ESTIMATED → EXECUTED → REALIZED.
+
+Planned represents the user's intent. Estimated represents the pre-execution calculation or scenario. Executed represents the known exchange-side outcome. Realized represents the financial result derived from completed activity when the necessary information and rules are sufficiently available.
+
+A later state should not be inferred, displayed, or treated as authoritative without sufficient evidence and data support.
+
+### 19.4 To-Be Buy Planning and Execution
+
+The buy process should begin with observing context and analyzing the available information needed to plan a buy.
+
+The user then forms a planned action, and AssetOps can calculate an estimated scenario once the required inputs and rules are sufficiently validated.
+
+Before submission, the necessary inputs should be validated to the extent currently supported by reliable data and business rules.
+
+The user makes the decision to proceed, after which the order is submitted and tracked, the execution state is captured, and the position and related financial context are updated.
+
+This process should not invent exchange endpoints, fee structures, or order rules beyond what discovery has already established.
+
+### 19.5 To-Be Sell Planning and Execution
+
+The sell process should use the current position and sufficiently reliable financial context to define a sell scenario.
+
+AssetOps should calculate estimated proceeds, fees, and expected result only according to validated rules and sufficient data.
+
+The user then decides whether to proceed, the order is executed, actual data is captured, and the realized result is determined or reconciled when possible.
+
+This process should remain dependent on validated data and rules rather than assuming any unverified exchange behavior.
+
+### 19.6 Position and Trade-Cycle Evolution
+
+The future-state process should represent buys, sells, and partial activity as events that may alter a position and its broader trade-cycle context.
+
+The methodology used to derive position state or trade-cycle result should not assume average cost, FIFO, or any other accounting method that has not yet been validated.
+
+That methodology remains a dependency for business-rule analysis.
+
+### 19.7 Order State and Exception Handling
+
+The future-state process should conceptually include open, pending, executed, partially executed, cancelled, replaced, and replaced-by-new-order states where applicable.
+
+It should preserve the real known state of an order and avoid silently treating incomplete activity as complete.
+
+The detailed order-state rules for Mercado Bitcoin remain dependent on further technical and integration discovery.
+
+### 19.8 Reconciliation and Data Confidence
+
+The future-state process should explicitly reconcile captured data, validated rules, and derived results.
+
+Divergences should remain visible and unresolved rather than being silently replaced by estimates.
+
+The process should clearly distinguish authoritative source, derived value, and user-entered or planned value.
+
+### 19.9 Asset and Portfolio Intelligence
+
+The future-state process should progress from transaction data to position and trade-cycle intelligence, then to asset-level intelligence, and then to portfolio intelligence.
+
+Higher-level intelligence should depend on sufficiently reliable lower-level fundamentals.
+
+The process should preserve the separation between realized trading performance, unrealized information, and portfolio value performance, including external cash flows when applicable.
+
+### 19.10 Decision Support and Future Automation
+
+Planning and scenario analysis should support decisions without predicting or guaranteeing outcomes.
+
+The future-state model should follow the conceptual progression Understand → Validate → Support → Automate.
+
+Future automation for financial actions should remain dependent on validated data, rules, security, and logic and should not be assumed as part of this initial To-Be process.
+
+### 19.11 Remaining Dependencies and Decision Points
+
+The future-state process still depends on several unresolved decision points: exchange/API data sufficiency, authoritative source per attribute, actual fees, precision and rounding, sellable quantity, partial execution behavior, cancellation and replacement behavior, position and trade-cycle methodology, realized-result methodology, historical reconstruction, security and authentication, and idempotency or synchronization where applicable.
+
+These points should remain open for later analysis and not be resolved implicitly in this section.
+
+### 19.12 To-Be Process Summary
+
+Observe Context → Plan Action → Calculate Scenario → Validate Required Information → User Decision → Submit/Track Order → Capture Actual Execution → Update Position / Trade-Cycle Context → Reconcile Financial Result → Update Asset / Portfolio Intelligence → Support Next Decision
+
+Exception states can redirect the process back to tracking, reconciliation, or a new user decision when the order or financial state is incomplete or unresolved.
