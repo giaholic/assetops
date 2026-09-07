@@ -2128,3 +2128,79 @@ When evaluating a product or technical trade-off, the team should ask:
 6. Has the underlying logic been sufficiently validated before automation is introduced?
 
 If a proposed capability conflicts materially with these principles, the conflict should be made explicit and justified before proceeding.
+
+## 17. Product Goals
+
+The following product goals translate the validated problem, discovery findings, product opportunity, and product principles into outcomes that AssetOps should enable.
+
+They describe what the product should help achieve without prescribing specific features, technologies, or implementation approaches.
+
+These goals should guide subsequent MVP scope, prioritization, requirements, and product outcome definition.
+
+### 17.1 PG-01 — Establish Reliable Trade Results
+
+AssetOps should enable the user to determine with confidence the financial result of completed trading activity based on sufficiently reliable transaction data and validated calculation rules.
+
+The product should make relevant quantities, costs, proceeds, fees, and other applicable financial inputs understandable and traceable when determining realized results.
+
+**Intended outcome:**
+The user can understand and reconcile whether completed trading activity produced a positive, negative, or neutral net financial result without depending on an unverified external reconstruction.
+
+### 17.2 PG-02 — Provide Complete Position and Trade-Cycle Context
+
+AssetOps should enable the user to understand trading activity as part of meaningful positions and trade cycles rather than only as isolated orders or transactions.
+
+The product should preserve the relationships needed to understand how purchases, sales, partial activity, fees, and other relevant events affect an asset position and its financial result over time.
+
+**Intended outcome:**
+The user can evaluate the financial context of an asset position and related trading activity without manually reconstructing that context from disconnected records.
+
+### 17.3 PG-03 — Enable Asset-Level Intelligence
+
+AssetOps should enable the user to evaluate trading and position information at the individual asset level using sufficiently reliable underlying financial data.
+
+Asset-level analysis should help the user understand how each asset contributes to trading results, current exposure, and relevant performance over time without overstating the precision of conclusions unsupported by the underlying data.
+
+**Intended outcome:**
+The user can compare and understand the financial behavior and contribution of individual assets to support decisions about where to focus attention and capital.
+
+### 17.4 PG-04 — Enable Portfolio-Level Intelligence
+
+AssetOps should enable the user to understand portfolio-level financial performance and composition using sufficiently reliable underlying position and asset-level information.
+
+Portfolio analysis should preserve meaningful distinctions between realized trading performance and changes in total portfolio value, including the effects of open positions and external cash flows where applicable.
+
+**Intended outcome:**
+The user can evaluate portfolio evolution and performance without conflating realized trading results, unrealized changes, or external movements of capital.
+
+### 17.5 PG-05 — Support Informed Trade Planning
+
+AssetOps should enable the user to evaluate potential trading actions using reliable historical, position, and financial context together with clearly stated assumptions.
+
+Planning and scenario analysis should help the user understand how different quantities, prices, fees, and other relevant variables may affect an expected financial result without representing uncertain market outcomes as predictions or guarantees.
+
+**Intended outcome:**
+The user can evaluate and compare potential trading scenarios with clearer financial context before deciding whether and how to act.
+
+### 17.6 PG-06 — Reduce Dependence on Manual Reconciliation
+
+AssetOps should reduce the manual effort required to reconstruct, compare, and reconcile financial information across the user's trading workflow.
+
+This reduction should result from providing sufficiently reliable and connected financial context rather than from removing validation steps that are necessary for confidence in the information.
+
+**Intended outcome:**
+The user spends less effort manually reconstructing financial context while maintaining or improving confidence in the information used to understand and plan trading activity.
+
+### 17.7 Applying the Product Goals
+
+Product goals should guide product scope, prioritization, and subsequent definition of measurable outcomes.
+
+When evaluating a proposed capability, the team should consider:
+
+1. Which product goal does this capability support?
+2. What user outcome is expected to improve?
+3. Does the capability depend on a lower-level product goal that has not yet been sufficiently established?
+4. Does it improve decision support without overstating certainty or expected investment outcomes?
+5. Does it preserve the reliability and traceability required by the Product Principles?
+
+A proposed capability that does not materially support a product goal should require explicit justification before being prioritized.
