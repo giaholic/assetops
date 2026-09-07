@@ -1954,25 +1954,25 @@ The next phase should focus on converting the validated problem understanding in
 
 ---
 
-## 12. Current Trading Goals and Behaviors
+## 15. Current Trading Goals and Behaviors
 
 The user currently follows a small-value trading strategy while learning and validating the process.
 
 These goals describe the user's current behavior and should not be interpreted as guaranteed or expected investment returns provided by AssetOps.
 
-### 12.1 Current Transaction Size
+### 15.1 Current Transaction Size
 
 Typical transactions currently range between approximately BRL 1 and BRL 2.
 
 The user intends to experiment with larger transaction values in the future after gaining confidence in the process and calculations.
 
-### 12.2 Minimum Monetary Result
+### 15.2 Minimum Monetary Result
 
 The user currently aims for a minimum positive result of approximately BRL 0.01 per completed buy/sell cycle after trading fees.
 
 This is a user-defined target rather than a guaranteed outcome.
 
-### 12.3 Target Return
+### 15.3 Target Return
 
 The user would like to evaluate trading scenarios that produce positive returns while accounting for trading fees.
 
@@ -1982,7 +1982,7 @@ This is a user-defined objective and not a guaranteed or validated investment ou
 
 AssetOps may calculate whether hypothetical or completed transactions meet a user-defined objective, but it should not represent such objectives as guaranteed future returns.
 
-### 12.4 Order Placement Behavior
+### 15.4 Order Placement Behavior
 
 The user generally:
 
@@ -2005,7 +2005,7 @@ If an order remains open for too long, the user may:
 
 The user wants the expected result after fees to remain positive before submitting a replacement order.
 
-### 12.5 Tax Considerations
+### 15.5 Tax Considerations
 
 The user recognizes that taxation may become relevant as transaction volumes and realized gains increase.
 
@@ -2025,35 +2025,106 @@ Tax rules must not be hard-coded based on assumptions.
 
 ---
 
-## 13. Discovery Principles
+## 16. Product Principles
 
-The following principles will guide the next stages of the project:
+The following principles define durable decision rules for AssetOps.
 
-### 13.1 Do Not Assume Exchange Rules
+They are intended to guide product, design, business-rule, architecture, engineering, and prioritization decisions when multiple implementation or experience alternatives are possible.
 
-Fee, precision, rounding, order, and execution rules must be validated against Mercado Bitcoin documentation and actual API behavior.
+The principles describe how the product should behave conceptually rather than defining specific features or technologies.
 
-### 13.2 Separate Estimated and Actual Values
+### 16.1 PP-01 — Reliability Before Convenience
 
-AssetOps should clearly distinguish between:
+AssetOps should prioritize the reliability and integrity of financial information over workflow convenience.
 
-- Planned transactions and real orders.
-- Estimated fees and actual fees.
-- Estimated results and realized results.
-- Hypothetical prices and executed prices.
+Reducing manual effort, navigation, or interaction cost is valuable, but not when doing so makes financial information less reliable, less understandable, or more difficult to reconcile.
 
-### 13.3 Support Decisions, Do Not Guarantee Outcomes
+When reliability and convenience conflict, reliability should take precedence.
 
-AssetOps may calculate scenarios and expected results based on user-defined assumptions.
+**Decision implication:**  
+A slower or more explicit workflow may be preferable to a simpler workflow that hides uncertainty or presents insufficiently validated information as authoritative.
 
-It should not guarantee that a particular buy or sell price will result in future profit.
+### 16.2 PP-02 — Preserve the Meaning of Financial Information
 
-### 13.4 Prefer Source Data Over Manual Reconstruction
+AssetOps should maintain clear distinctions between information representing different stages of a transaction or analysis.
 
-Whenever reliable information is available directly from Mercado Bitcoin, AssetOps should prefer that information over manually reconstructed values.
+In particular:
 
-### 13.5 Validate Before Automating
+- Planned values represent user intent.
+- Estimated values represent calculated expectations.
+- Executed values represent what occurred during exchange execution.
+- Realized values represent the financial result derived from completed activity.
 
-Existing spreadsheet formulas should be treated as current-state business logic to investigate, not automatically as the correct future-state implementation.
+These concepts should not be silently substituted for one another.
 
-Each financial calculation should be documented, validated, and tested before being implemented in ServiceNow.
+**Decision implication:**  
+When the system cannot determine an actual value reliably, it should communicate the appropriate information state rather than presenting an estimate as an actual result.
+
+### 16.3 PP-03 — Results Should Be Explainable and Traceable
+
+AssetOps should favor financial results that can be understood and traced to their underlying transaction data and applicable calculation rules.
+
+A calculated result should not function only as an unexplained output.
+
+Where appropriate, the user should be able to understand which quantities, costs, proceeds, fees, and other relevant inputs contributed to the result.
+
+**Decision implication:**  
+When choosing between a calculation that is easier to display and one that is sufficiently traceable and reconcilable, the product should favor the latter.
+
+### 16.4 PP-04 — Build Intelligence From Reliable Foundations
+
+Higher-level analysis should depend on sufficiently reliable lower-level information.
+
+The current analytical hierarchy is:
+
+Transaction Data  
+→ Position and Trade-Cycle Intelligence  
+→ Asset-Level Intelligence  
+→ Portfolio Intelligence
+
+Portfolio and asset-level conclusions should not create an impression of precision that is unsupported by the underlying transaction and position data.
+
+**Decision implication:**  
+A higher-level analytical capability may be deferred when its underlying data or calculation methodology has not yet reached the required level of reliability.
+
+### 16.5 PP-05 — Support Decisions Without Pretending to Predict Outcomes
+
+AssetOps should help the user understand historical results, current positions, financial scenarios, performance, and relevant information for planning future actions.
+
+It should not represent uncertain market outcomes as known or guaranteed.
+
+Scenario analysis represents what may happen under defined assumptions. It does not represent a prediction that those conditions will occur.
+
+**Decision implication:**  
+Product language and analytical outputs should distinguish calculated scenarios from predictions, recommendations, and guaranteed investment outcomes.
+
+### 16.6 PP-06 — Validate Before Automating
+
+AssetOps should not automate financial actions or decisions based on logic, data, or calculation rules that have not first been sufficiently understood and validated.
+
+The intended progression is:
+
+Understand  
+→ Validate  
+→ Support  
+→ Automate
+
+Future rule-based or autonomous capabilities should inherit the same reliability, traceability, security, and validation standards applied to manually initiated analytical processes.
+
+**Decision implication:**  
+Automation should be deferred when the product cannot yet reliably explain or validate the underlying decision logic or financial result.
+
+### 16.7 Applying the Principles
+
+Product principles should be used as decision criteria rather than absolute substitutes for judgment.
+
+When evaluating a product or technical trade-off, the team should ask:
+
+1. Does this preserve or improve the reliability of financial information?
+2. Is the information state clear and correctly represented?
+3. Can important financial results be explained and traced?
+4. Are higher-level conclusions supported by reliable underlying information?
+5. Are scenarios or uncertain outcomes represented honestly?
+6. Has the underlying logic been sufficiently validated before automation is introduced?
+
+If a proposed capability conflicts materially with these principles, the conflict should be made explicit and justified before proceeding.
