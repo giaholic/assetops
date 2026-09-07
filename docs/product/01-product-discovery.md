@@ -2430,3 +2430,125 @@ These points should remain open for later analysis and not be resolved implicitl
 Observe Context → Plan Action → Calculate Scenario → Validate Required Information → User Decision → Submit/Track Order → Capture Actual Execution → Update Position / Trade-Cycle Context → Reconcile Financial Result → Update Asset / Portfolio Intelligence → Support Next Decision
 
 Exception states can redirect the process back to tracking, reconciliation, or a new user decision when the order or financial state is incomplete or unresolved.
+
+## 20. User Journey
+
+This section describes the primary user journey for AssetOps based only on the validated discovery findings, Product Principles, Product Goals, Detailed As-Is Process, and To-Be Process already documented.
+
+It is implementation-independent and reflects the experience of moving from market observation through trading activity, result understanding, and the next decision.
+
+### 20.1 Journey Scope and Perspective
+
+The user journey represents the user's experience from observing market context, through planning and executing trading activity, to understanding the result and deciding what to do next.
+
+It is not a screen flow, interface specification, or technical architecture description.
+
+### 20.2 Journey Overview
+
+Observe → Evaluate → Plan → Estimate → Decide → Execute / Monitor → Understand Actual Execution → Reconcile Result → Understand Position / Asset / Portfolio → Decide Next Action
+
+Exception states can return the user to monitoring, re-evaluation, or a new decision when activity is incomplete or unresolved.
+
+### 20.3 Stage 1 — Observe Market and Portfolio Context
+
+The user's objective at this stage is to understand current market context and any available portfolio context before considering action.
+
+Current actions include analyzing Mercado Bitcoin charts across different horizons, reviewing available execution-related information, and checking the spreadsheet-based context used during discovery.
+
+The information needed at this stage includes market movement, available price context, existing position context, and any information that helps frame whether a trade is worth further evaluation.
+
+Current interactions rely on Mercado Bitcoin and the spreadsheet, with email acting as a trigger after execution rather than as a source of decision-making context.
+
+The main current pain point is that the user must assemble context manually across disconnected sources.
+
+The future-experience intent is to provide consolidated financial context that helps the user observe market and portfolio state without losing reliability or traceability.
+
+### 20.4 Stage 2 — Evaluate Opportunity
+
+At this stage, the user evaluates whether a possible buy or sell action is worth pursuing.
+
+The evaluation is exploratory and depends on understanding position, historical activity, results, and other relevant context before continuing.
+
+The user is not yet committed to an order; the purpose is to decide whether the opportunity merits planning.
+
+### 20.5 Stage 3 — Plan and Estimate Trade
+
+At this stage, the process enters PLANNED and ESTIMATED states.
+
+The user defines the intended trade and estimates quantity, price, fees, and expected financial result when applicable.
+
+The current pain point is spreadsheet-driven manual reconstruction, which requires the user to combine market observations and calculation assumptions across tools.
+
+The future intent is to provide estimates that are reliable, clearly identified as estimates, and grounded in validated rules and data.
+
+### 20.6 Stage 4 — Decide and Submit Order
+
+The decision to submit an order remains the user's responsibility.
+
+AssetOps should provide context and decision support, not prediction or guarantee.
+
+The order is submitted to the execution environment without prescribing a specific interface or endpoint.
+
+### 20.7 Stage 5 — Monitor Order State
+
+The user needs to understand whether an order is open, pending, executed, partially executed, cancelled, or replaced.
+
+The journey must preserve the real known state and avoid presenting incomplete activity as if it were finished.
+
+Replacement and re-evaluation paths remain part of the journey when the user decides to continue, cancel, or adjust the order.
+
+### 20.8 Stage 6 — Understand Actual Execution
+
+When execution occurs, the journey transitions to EXECUTED.
+
+At this stage, the user needs actual quantities, prices, fees, and other execution information when available.
+
+Executed must remain distinct from planned or estimated values.
+
+### 20.9 Stage 7 — Reconcile and Understand Financial Result
+
+At this stage, the journey transitions to REALIZED only when the available data and rules support a sufficiently reliable result.
+
+The current pain point is the lack of independent, reliable verification of the realized net result.
+
+The future intent is an explainable and traceable result that can be reconciled from known inputs and validated rules.
+
+### 20.10 Stage 8 — Understand Position and Trade-Cycle Context
+
+The user then needs to understand how the executed activity affects position state and broader trade-cycle context.
+
+This understanding must account for partial activity and multiple purchases where they affect the position.
+
+The methodology for position or cost basis calculation is not chosen here and remains dependent on later business-rule analysis.
+
+### 20.11 Stage 9 — Understand Asset and Portfolio Context
+
+The journey should progress from position and trade-cycle understanding to asset-level and portfolio-level intelligence.
+
+The separation between realized trading performance, unrealized information, and portfolio value performance should remain explicit, including external cash flows when applicable.
+
+### 20.12 Stage 10 — Decide Next Action
+
+The user uses the context gained from the journey to decide the next action.
+
+That next action may be to observe more, plan a new buy or sell, maintain the current position, re-evaluate the situation, or take another manual action.
+
+The product should not turn this into an automatic recommendation path.
+
+### 20.13 Cross-Journey Pain Points
+
+The main pain points across the journey are result confidence, spreadsheet and exchange discrepancies, manual reconciliation, sellable quantity uncertainty, iterative planning, and a fragmented workflow.
+
+These pain points should be treated as already observed, without inflating severity or adding unsupported consequences.
+
+### 20.14 Desired Experience Principles
+
+The experience should reflect the Product Principles by favoring reliability before convenience, correct information-state representation, explainability and traceability, reliable foundations before higher-level intelligence, honest decision support, and validation before automation.
+
+### 20.15 Journey Design Implications
+
+Later product design work should consider user flows for portfolio, transactions, position and trade-cycle context, trade planning and scenario analysis, execution monitoring, and result understanding.
+
+It should also account for loading, empty, error, and unresolved states where applicable, while exploring information architecture, navigation, and hierarchy.
+
+The journey should be validated with the user before design decisions are treated as definitive.
